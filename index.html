@@ -101,7 +101,7 @@
           </p>
         </div>
       </div>
-      <!-- Progress Pill (Compact & Rapi HP) -->
+      <!-- Progress Pill -->
       <div class="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full shrink-0">
         <i class="fa-solid fa-graduation-cap text-emerald-600 text-xs sm:text-sm"></i>
         <span class="text-[11px] sm:text-xs font-bold text-emerald-800 whitespace-nowrap" id="headerProgressText">Kuis: 0%</span>
@@ -132,42 +132,63 @@
             Media pembelajaran interaktif Kurikulum Merdeka. Pelajari struktur virus, siklus replikasi, peranan positif & negatif, serta kuis 20 soal bergambar.
           </p>
           <div class="flex flex-col sm:flex-row gap-2.5">
-            <button onclick="switchTab('struktur')" class="w-full sm:w-auto px-4 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-emerald-500/30 transition flex items-center justify-center gap-2">
+            <button onclick="switchTab('struktur')" class="w-full sm:w-auto px-4 py-2.5 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-slate-950 font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-emerald-500/30 transition flex items-center justify-center gap-2 cursor-pointer">
               <i class="fa-solid fa-circle-play"></i> Mulai Belajar Anatomi
             </button>
-            <button onclick="switchTab('peranan')" class="w-full sm:w-auto px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-xs sm:text-sm rounded-xl transition flex items-center justify-center gap-2">
+            <button onclick="switchTab('peranan')" class="w-full sm:w-auto px-4 py-2.5 bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/20 font-semibold text-xs sm:text-sm rounded-xl transition flex items-center justify-center gap-2 cursor-pointer">
               <i class="fa-brands fa-youtube text-red-400"></i> Video Pembelajaran
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Capaian Pembelajaran Card -->
+      <!-- Capaian Pembelajaran Card & PINTASAN INTERAKTIF -->
       <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-3">
-        <div class="flex items-center gap-2 text-emerald-700 font-bold text-sm sm:text-base">
-          <i class="fa-solid fa-bullseye text-base sm:text-lg"></i>
-          <h3>Capaian Pembelajaran (CP) Kurikulum Merdeka</h3>
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+          <div class="flex items-center gap-2 text-emerald-700 font-bold text-sm sm:text-base">
+            <i class="fa-solid fa-bullseye text-base sm:text-lg"></i>
+            <h3>Capaian Pembelajaran (CP)</h3>
+          </div>
+          <span class="text-[10px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">Pintasan Cepat</span>
         </div>
+        
         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-          Pada akhir fase E, peserta didik mampu mengidentifikasi struktur virus, menganalisis proses reproduksi virus (siklus litik dan lisogenik), mengevaluasi peranan virus dalam kehidupan sehari-hari, serta merumuskan upaya pencegahan penyebaran virus.
+          Pada akhir fase E, peserta didik mampu mengidentifikasi struktur virus, menganalisis proses reproduksi (litik & lisogenik), mengevaluasi peranan virus, serta merumuskan upaya pencegahan.
         </p>
+
+        <!-- PINTASAN TOMBOL INTERAKTIF (SHORTCUTS) -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
-          <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-100 text-center">
-            <i class="fa-solid fa-dna text-emerald-600 text-base mb-1"></i>
-            <p class="text-[11px] font-bold text-slate-800">Ciri & Struktur</p>
-          </div>
-          <div class="bg-teal-50 p-2.5 rounded-xl border border-teal-100 text-center">
-            <i class="fa-solid fa-arrows-spin text-teal-600 text-base mb-1"></i>
-            <p class="text-[11px] font-bold text-slate-800">Siklus Replikasi</p>
-          </div>
-          <div class="bg-amber-50 p-2.5 rounded-xl border border-amber-100 text-center">
-            <i class="fa-solid fa-shield-virus text-amber-600 text-base mb-1"></i>
-            <p class="text-[11px] font-bold text-slate-800">Peranan Virus</p>
-          </div>
-          <div class="bg-blue-50 p-2.5 rounded-xl border border-blue-100 text-center">
-            <i class="fa-solid fa-syringe text-blue-600 text-base mb-1"></i>
-            <p class="text-[11px] font-bold text-slate-800">Pencegahan</p>
-          </div>
+          <!-- Pintasan 1: Ciri & Struktur -->
+          <button onclick="switchTab('struktur')" class="bg-emerald-50 hover:bg-emerald-100 active:scale-95 transition-all p-2.5 rounded-xl border border-emerald-200 text-center cursor-pointer group shadow-xs">
+            <i class="fa-solid fa-dna text-emerald-600 text-base mb-1 group-hover:scale-110 transition-transform"></i>
+            <p class="text-[11px] font-bold text-slate-800 flex items-center justify-center gap-1">
+              Ciri & Struktur <i class="fa-solid fa-chevron-right text-[9px] text-emerald-600 opacity-70 group-hover:translate-x-0.5 transition-transform"></i>
+            </p>
+          </button>
+          
+          <!-- Pintasan 2: Siklus Replikasi -->
+          <button onclick="switchTab('replikasi')" class="bg-teal-50 hover:bg-teal-100 active:scale-95 transition-all p-2.5 rounded-xl border border-teal-200 text-center cursor-pointer group shadow-xs">
+            <i class="fa-solid fa-arrows-spin text-teal-600 text-base mb-1 group-hover:scale-110 transition-transform"></i>
+            <p class="text-[11px] font-bold text-slate-800 flex items-center justify-center gap-1">
+              Siklus Replikasi <i class="fa-solid fa-chevron-right text-[9px] text-teal-600 opacity-70 group-hover:translate-x-0.5 transition-transform"></i>
+            </p>
+          </button>
+          
+          <!-- Pintasan 3: Peranan Virus -->
+          <button onclick="switchTab('peranan')" class="bg-amber-50 hover:bg-amber-100 active:scale-95 transition-all p-2.5 rounded-xl border border-amber-200 text-center cursor-pointer group shadow-xs">
+            <i class="fa-solid fa-shield-virus text-amber-600 text-base mb-1 group-hover:scale-110 transition-transform"></i>
+            <p class="text-[11px] font-bold text-slate-800 flex items-center justify-center gap-1">
+              Peranan Virus <i class="fa-solid fa-chevron-right text-[9px] text-amber-600 opacity-70 group-hover:translate-x-0.5 transition-transform"></i>
+            </p>
+          </button>
+          
+          <!-- Pintasan 4: Pencegahan -->
+          <button onclick="switchTabAndScroll('peranan', 'secPencegahan')" class="bg-blue-50 hover:bg-blue-100 active:scale-95 transition-all p-2.5 rounded-xl border border-blue-200 text-center cursor-pointer group shadow-xs">
+            <i class="fa-solid fa-syringe text-blue-600 text-base mb-1 group-hover:scale-110 transition-transform"></i>
+            <p class="text-[11px] font-bold text-slate-800 flex items-center justify-center gap-1">
+              Pencegahan <i class="fa-solid fa-chevron-right text-[9px] text-blue-600 opacity-70 group-hover:translate-x-0.5 transition-transform"></i>
+            </p>
+          </button>
         </div>
       </div>
 
@@ -266,10 +287,10 @@
 
       <!-- Selector Model Virus -->
       <div class="flex rounded-xl bg-slate-200 p-1 gap-1">
-        <button id="btnModelBakteriofag" onclick="selectVirusModel('bakteriofag')" class="flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm">
+        <button id="btnModelBakteriofag" onclick="selectVirusModel('bakteriofag')" class="flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm cursor-pointer">
           <i class="fa-solid fa-bacterium mr-1"></i> Bakteriofag T4
         </button>
-        <button id="btnModelCorona" onclick="selectVirusModel('corona')" class="flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900">
+        <button id="btnModelCorona" onclick="selectVirusModel('corona')" class="flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer">
           <i class="fa-solid fa-virus-covid mr-1"></i> Coronavirus
         </button>
       </div>
@@ -402,10 +423,10 @@
           </div>
 
           <div class="mt-3 pt-2.5 border-t border-slate-100 flex gap-2">
-            <button onclick="nextAnatomyPoint(-1)" class="flex-1 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition">
+            <button onclick="nextAnatomyPoint(-1)" class="flex-1 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition cursor-pointer">
               <i class="fa-solid fa-arrow-left mr-1"></i> Sebelum
             </button>
-            <button onclick="nextAnatomyPoint(1)" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition">
+            <button onclick="nextAnatomyPoint(1)" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition cursor-pointer">
               Lanjut <i class="fa-solid fa-arrow-right ml-1"></i>
             </button>
           </div>
@@ -429,7 +450,7 @@
 
       <!-- Mode Selector Tabs -->
       <div class="grid grid-cols-2 gap-2.5">
-        <button id="btnSiklusLitik" onclick="selectCycleMode('litik')" class="p-3 sm:p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/50 text-left transition shadow-sm">
+        <button id="btnSiklusLitik" onclick="selectCycleMode('litik')" class="p-3 sm:p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/50 text-left transition shadow-sm cursor-pointer">
           <div class="flex items-center justify-between mb-1">
             <span class="font-bold text-xs sm:text-sm text-emerald-900">Siklus Litik</span>
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
@@ -437,7 +458,7 @@
           <p class="text-[11px] text-emerald-700 leading-tight">Sel inang lisis (pecah) di akhir proses.</p>
         </button>
 
-        <button id="btnSiklusLisogenik" onclick="selectCycleMode('lisogenik')" class="p-3 sm:p-4 rounded-2xl border-2 border-slate-200 bg-white text-left transition hover:border-teal-300">
+        <button id="btnSiklusLisogenik" onclick="selectCycleMode('lisogenik')" class="p-3 sm:p-4 rounded-2xl border-2 border-slate-200 bg-white text-left transition hover:border-teal-300 cursor-pointer">
           <div class="flex items-center justify-between mb-1">
             <span class="font-bold text-xs sm:text-sm text-slate-800">Siklus Lisogenik</span>
             <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
@@ -478,10 +499,10 @@
         </div>
 
         <div class="flex gap-2.5">
-          <button onclick="changeCycleStep(-1)" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5">
+          <button onclick="changeCycleStep(-1)" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5 cursor-pointer">
             <i class="fa-solid fa-chevron-left"></i> Sebelum
           </button>
-          <button onclick="changeCycleStep(1)" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5">
+          <button onclick="changeCycleStep(1)" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5 cursor-pointer">
             Lanjut <i class="fa-solid fa-chevron-right"></i>
           </button>
         </div>
@@ -561,10 +582,10 @@
       <!-- Filterable Peranan Tabs -->
       <div class="space-y-3">
         <div class="flex rounded-xl bg-slate-200 p-1 gap-1">
-          <button id="btnRoleHarmful" onclick="toggleRoleView('harmful')" class="flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-red-700 shadow-sm">
+          <button id="btnRoleHarmful" onclick="toggleRoleView('harmful')" class="flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-red-700 shadow-sm cursor-pointer">
             <i class="fa-solid fa-triangle-exclamation mr-1"></i> Merugikan
           </button>
-          <button id="btnRoleBeneficial" onclick="toggleRoleView('beneficial')" class="flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900">
+          <button id="btnRoleBeneficial" onclick="toggleRoleView('beneficial')" class="flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer">
             <i class="fa-solid fa-hand-holding-medical mr-1"></i> Menguntungkan
           </button>
         </div>
@@ -630,6 +651,28 @@
         </div>
 
       </div>
+
+      <!-- SECTION PENCEGAHAN (BAGIAN TARGET SCROLL PINTASAN PENCEGAHAN) -->
+      <div id="secPencegahan" class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 space-y-3">
+        <h3 class="text-xs sm:text-sm font-bold text-emerald-900 flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-emerald-700 text-base"></i> Upaya Pencegahan Penyakit Virus
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <div class="bg-white p-3 rounded-xl border border-emerald-100 text-[11px] space-y-1">
+            <p class="font-bold text-emerald-800"><i class="fa-solid fa-vial text-emerald-600 mr-1"></i> 1. Vaksinasi / Imunisasi</p>
+            <p class="text-slate-600 leading-relaxed">Merangsang pembentukan antibodi memori spesifik.</p>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-emerald-100 text-[11px] space-y-1">
+            <p class="font-bold text-emerald-800"><i class="fa-solid fa-soap text-emerald-600 mr-1"></i> 2. Pola Hidup Bersih (PHBS)</p>
+            <p class="text-slate-600 leading-relaxed">Cuci tangan dengan sabun/alkohol & cuci makanan.</p>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-emerald-100 text-[11px] space-y-1">
+            <p class="font-bold text-emerald-800"><i class="fa-solid fa-capsules text-emerald-600 mr-1"></i> 3. Obat Antivirus</p>
+            <p class="text-slate-600 leading-relaxed">Menghambat siklus replikasi virus dalam sel inang.</p>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ========================================== -->
@@ -639,10 +682,10 @@
       
       <!-- Sub Tab Kuis vs Glosarium -->
       <div class="flex rounded-xl bg-slate-200 p-1 gap-1">
-        <button id="btnSubKuis" onclick="toggleQuizSubTab('quiz')" class="flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm">
+        <button id="btnSubKuis" onclick="toggleQuizSubTab('quiz')" class="flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm cursor-pointer">
           <i class="fa-solid fa-pen-to-square mr-1"></i> Uji Pemahaman (20 Soal)
         </button>
-        <button id="btnSubGlosarium" onclick="toggleQuizSubTab('glosarium')" class="flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900">
+        <button id="btnSubGlosarium" onclick="toggleQuizSubTab('glosarium')" class="flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer">
           <i class="fa-solid fa-book mr-1"></i> Glosarium
         </button>
       </div>
@@ -690,10 +733,10 @@
 
           <!-- Navigation buttons -->
           <div class="pt-1 flex justify-between gap-2.5">
-            <button id="btnPrevQuiz" onclick="navigateQuiz(-1)" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition disabled:opacity-50">
+            <button id="btnPrevQuiz" onclick="navigateQuiz(-1)" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition disabled:opacity-50 cursor-pointer">
               <i class="fa-solid fa-arrow-left mr-1"></i> Sebelum
             </button>
-            <button id="btnNextQuiz" onclick="navigateQuiz(1)" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition shadow-md shadow-emerald-200">
+            <button id="btnNextQuiz" onclick="navigateQuiz(1)" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition shadow-md shadow-emerald-200 cursor-pointer">
               Lanjut <i class="fa-solid fa-arrow-right ml-1"></i>
             </button>
           </div>
@@ -721,7 +764,7 @@
             </div>
           </div>
 
-          <button onclick="restartQuiz()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-500/30">
+          <button onclick="restartQuiz()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-500/30 cursor-pointer">
             <i class="fa-solid fa-rotate-right mr-1"></i> Ulangi Kuis 20 Soal
           </button>
         </div>
@@ -753,35 +796,35 @@
   <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] px-1 py-1 sm:px-2 sm:py-1.5">
     <div class="max-w-md mx-auto grid grid-cols-5 gap-0.5 text-center">
       
-      <button onclick="switchTab('beranda')" id="nav-beranda" class="active-tab flex flex-col items-center justify-center py-1 rounded-xl transition group">
+      <button onclick="switchTab('beranda')" id="nav-beranda" class="active-tab flex flex-col items-center justify-center py-1 rounded-xl transition group cursor-pointer">
         <div class="tab-icon-bg w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center transition-all duration-200">
           <i class="fa-solid fa-house text-xs sm:text-sm"></i>
         </div>
         <span class="text-[10px] tracking-tight mt-0.5 whitespace-nowrap">Beranda</span>
       </button>
 
-      <button onclick="switchTab('struktur')" id="nav-struktur" class="flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-500 hover:text-slate-800 group">
+      <button onclick="switchTab('struktur')" id="nav-struktur" class="flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-500 hover:text-slate-800 group cursor-pointer">
         <div class="tab-icon-bg w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center transition-all duration-200">
           <i class="fa-solid fa-dna text-xs sm:text-sm"></i>
         </div>
         <span class="text-[10px] tracking-tight mt-0.5 whitespace-nowrap">Struktur</span>
       </button>
 
-      <button onclick="switchTab('replikasi')" id="nav-replikasi" class="flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-500 hover:text-slate-800 group">
+      <button onclick="switchTab('replikasi')" id="nav-replikasi" class="flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-500 hover:text-slate-800 group cursor-pointer">
         <div class="tab-icon-bg w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center transition-all duration-200">
           <i class="fa-solid fa-arrows-spin text-xs sm:text-sm"></i>
         </div>
         <span class="text-[10px] tracking-tight mt-0.5 whitespace-nowrap">Replikasi</span>
       </button>
 
-      <button onclick="switchTab('peranan')" id="nav-peranan" class="flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-500 hover:text-slate-800 group">
+      <button onclick="switchTab('peranan')" id="nav-peranan" class="flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-500 hover:text-slate-800 group cursor-pointer">
         <div class="tab-icon-bg w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center transition-all duration-200">
           <i class="fa-solid fa-circle-play text-xs sm:text-sm"></i>
         </div>
         <span class="text-[10px] tracking-tight mt-0.5 whitespace-nowrap">Peranan</span>
       </button>
 
-      <button onclick="switchTab('kuis')" id="nav-kuis" class="flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-500 hover:text-slate-800 group">
+      <button onclick="switchTab('kuis')" id="nav-kuis" class="flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-500 hover:text-slate-800 group cursor-pointer">
         <div class="tab-icon-bg w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center transition-all duration-200">
           <i class="fa-solid fa-pen-to-square text-xs sm:text-sm"></i>
         </div>
@@ -951,11 +994,19 @@
       const navIds = ['beranda', 'struktur', 'replikasi', 'peranan', 'kuis'];
       navIds.forEach(id => {
         const btn = document.getElementById('nav-' + id);
-        if (id === tabId) btn.className = "active-tab flex flex-col items-center justify-center py-1 rounded-xl transition group";
-        else btn.className = "flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-500 hover:text-slate-800 group";
+        if (id === tabId) btn.className = "active-tab flex flex-col items-center justify-center py-1 rounded-xl transition group cursor-pointer";
+        else btn.className = "flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-500 hover:text-slate-800 group cursor-pointer";
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
       updateProgressTracker();
+    }
+
+    function switchTabAndScroll(tabId, elementId) {
+      switchTab(tabId);
+      setTimeout(() => {
+        const el = document.getElementById(elementId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
 
     function selectVirusModel(model) {
@@ -966,12 +1017,12 @@
       const svgBakt = document.getElementById('svgContainerBakteriofag');
       const svgCor = document.getElementById('svgContainerCorona');
       if (model === 'bakteriofag') {
-        btnBakt.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm";
-        btnCor.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900";
+        btnBakt.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm cursor-pointer";
+        btnCor.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer";
         svgBakt.classList.remove('hidden'); svgCor.classList.add('hidden');
       } else {
-        btnCor.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm";
-        btnBakt.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900";
+        btnCor.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm cursor-pointer";
+        btnBakt.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer";
         svgCor.classList.remove('hidden'); svgBakt.classList.add('hidden');
       }
       updateAnatomyDisplay();
@@ -1003,11 +1054,11 @@
       const btnLitik = document.getElementById('btnSiklusLitik');
       const btnLisogenik = document.getElementById('btnSiklusLisogenik');
       if (mode === 'litik') {
-        btnLitik.className = "p-3 sm:p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/50 text-left transition shadow-sm";
-        btnLisogenik.className = "p-3 sm:p-4 rounded-2xl border-2 border-slate-200 bg-white text-left transition hover:border-teal-300";
+        btnLitik.className = "p-3 sm:p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/50 text-left transition shadow-sm cursor-pointer";
+        btnLisogenik.className = "p-3 sm:p-4 rounded-2xl border-2 border-slate-200 bg-white text-left transition hover:border-teal-300 cursor-pointer";
       } else {
-        btnLisogenik.className = "p-3 sm:p-4 rounded-2xl border-2 border-teal-500 bg-teal-50/50 text-left transition shadow-sm";
-        btnLitik.className = "p-3 sm:p-4 rounded-2xl border-2 border-slate-200 bg-white text-left transition hover:border-emerald-300";
+        btnLisogenik.className = "p-3 sm:p-4 rounded-2xl border-2 border-teal-500 bg-teal-50/50 text-left transition shadow-sm cursor-pointer";
+        btnLitik.className = "p-3 sm:p-4 rounded-2xl border-2 border-slate-200 bg-white text-left transition hover:border-emerald-300 cursor-pointer";
       }
       renderCycleSteps();
     }
@@ -1016,7 +1067,7 @@
       const steps = cycleData[currentCycleMode];
       const pillsContainer = document.getElementById('cycleStepPills');
       pillsContainer.innerHTML = steps.map((s, idx) => `
-        <button onclick="jumpToCycleStep(${idx})" class="px-2.5 py-1 rounded-xl text-[11px] font-bold shrink-0 transition ${idx === currentCycleStepIndex ? 'bg-emerald-600 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
+        <button onclick="jumpToCycleStep(${idx})" class="px-2.5 py-1 rounded-xl text-[11px] font-bold shrink-0 transition cursor-pointer ${idx === currentCycleStepIndex ? 'bg-emerald-600 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
           ${s.num}. ${s.name.split(' ')[0]}
         </button>
       `).join('');
@@ -1046,12 +1097,12 @@
       const secH = document.getElementById('roleHarmfulSection');
       const secB = document.getElementById('roleBeneficialSection');
       if (view === 'harmful') {
-        btnH.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-red-700 shadow-sm";
-        btnB.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900";
+        btnH.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-red-700 shadow-sm cursor-pointer";
+        btnB.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer";
         secH.classList.remove('hidden'); secB.classList.add('hidden');
       } else {
-        btnB.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm";
-        btnH.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900";
+        btnB.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm cursor-pointer";
+        btnH.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer";
         secB.classList.remove('hidden'); secH.classList.add('hidden');
       }
     }
@@ -1062,12 +1113,12 @@
       const secQ = document.getElementById('sectionQuiz');
       const secG = document.getElementById('sectionGlosarium');
       if (sub === 'quiz') {
-        btnQ.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm";
-        btnG.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900";
+        btnQ.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm cursor-pointer";
+        btnG.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer";
         secQ.classList.remove('hidden'); secG.classList.add('hidden');
       } else {
-        btnG.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm";
-        btnQ.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900";
+        btnG.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm cursor-pointer";
+        btnQ.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer";
         secG.classList.remove('hidden'); secQ.classList.add('hidden');
         renderGlossary();
       }
@@ -1091,15 +1142,15 @@
       const selectedAns = quizAnswers[quizCurrentIndex];
 
       container.innerHTML = q.options.map((opt, idx) => {
-        let btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-left text-xs sm:text-sm transition flex items-center justify-between font-medium text-slate-700 leading-snug gap-2";
+        let btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-left text-xs sm:text-sm transition flex items-center justify-between font-medium text-slate-700 leading-snug gap-2 cursor-pointer";
         let iconHtml = `<span class="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center text-[10px] font-bold text-slate-500 shrink-0">${String.fromCharCode(65 + idx)}</span>`;
 
         if (selectedAns !== null) {
           if (idx === q.correct) {
-            btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-left text-xs sm:text-sm font-bold text-emerald-900 flex items-center justify-between leading-snug gap-2";
+            btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-left text-xs sm:text-sm font-bold text-emerald-900 flex items-center justify-between leading-snug gap-2 cursor-default";
             iconHtml = `<span class="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] shrink-0"><i class="fa-solid fa-check"></i></span>`;
           } else if (idx === selectedAns) {
-            btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border-2 border-red-500 bg-red-50 text-left text-xs sm:text-sm font-bold text-red-900 flex items-center justify-between leading-snug gap-2";
+            btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border-2 border-red-500 bg-red-50 text-left text-xs sm:text-sm font-bold text-red-900 flex items-center justify-between leading-snug gap-2 cursor-default";
             iconHtml = `<span class="w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center text-[10px] shrink-0"><i class="fa-solid fa-xmark"></i></span>`;
           }
         }

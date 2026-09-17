@@ -781,35 +781,62 @@
       <!-- QUIZ SECTION -->
       <div id="sectionQuiz" class="space-y-3.5">
         
-        <!-- Quiz Progress Header -->
+        <!-- Quiz Progress & Audio Header -->
         <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex items-center justify-between gap-2">
           <div class="min-w-0">
-            <h2 class="font-bold text-slate-900 text-xs sm:text-base flex items-center gap-1.5 truncate">
+            <h2 class="font-extrabold text-slate-900 text-xs sm:text-base flex items-center gap-1.5 truncate">
               <i class="fa-solid fa-graduation-cap text-emerald-600 shrink-0"></i> Evaluasi Biologi Virus
             </h2>
             <p class="text-[10px] sm:text-xs text-slate-500 truncate">20 Soal Bergambar Kurikulum Merdeka</p>
           </div>
-          <span id="quizQuestionTracker" class="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full whitespace-nowrap shrink-0">
-            Soal 1 / 20
-          </span>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button id="btnAudioToggle" onclick="toggleQuizAudio()" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer flex items-center gap-1 border border-slate-200 shadow-xs">
+              <i id="audioIcon" class="fa-solid fa-volume-high text-emerald-600"></i> <span id="audioText" class="hidden sm:inline">Suara: On</span>
+            </button>
+            <span id="quizQuestionTracker" class="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full whitespace-nowrap">
+              Soal 1 / 20
+            </span>
+          </div>
+        </div>
+
+        <!-- 20-QUESTION QUICK NAVIGATOR PILLS -->
+        <div class="bg-white rounded-2xl p-3 border border-slate-200 shadow-sm space-y-2">
+          <div class="flex items-center justify-between text-[11px] px-1 font-bold text-slate-700">
+            <span><i class="fa-solid fa-list-ol text-emerald-600 mr-1"></i> Navigasi Soal (1 - 20):</span>
+            <span id="quizStreakBadge" class="hidden text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-300 font-extrabold animate-bounce shadow-xs">
+              🔥 0 Beruntun
+            </span>
+          </div>
+          <div id="quizNavPillsContainer" class="flex items-center gap-1.5 overflow-x-auto pb-1">
+            <!-- Populated dynamically by JS -->
+          </div>
         </div>
 
         <!-- Quiz Card Container -->
         <div id="quizCard" class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-3.5">
-          <div class="space-y-1.5">
+          <div class="flex items-center justify-between gap-2">
             <span id="quizCategoryBadge" class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 inline-block">
               Kategori
             </span>
-            <h3 id="quizQuestionText" class="text-xs sm:text-base font-bold text-slate-900 leading-normal">
-              ---
-            </h3>
+            <button id="btnFlagQuestion" onclick="toggleFlagQuestion()" class="text-[11px] font-semibold text-slate-500 hover:text-amber-600 px-2 py-0.5 rounded-md border border-slate-200 hover:border-amber-300 transition cursor-pointer flex items-center gap-1">
+              <i class="fa-solid fa-bookmark"></i> <span id="flagBtnText">Tandai Ragu</span>
+            </button>
           </div>
+
+          <h3 id="quizQuestionText" class="text-xs sm:text-base font-bold text-slate-900 leading-normal">
+            ---
+          </h3>
 
           <!-- Image Container -->
           <div id="quizImageContainer" class="hidden w-full flex justify-center bg-slate-900 rounded-xl p-3 my-2 shadow-inner border border-slate-800 text-white"></div>
 
           <!-- Options Container -->
           <div id="quizOptionsContainer" class="space-y-2">
+            <!-- Populated dynamically by JS -->
+          </div>
+
+          <!-- Interactive Feedback Banner -->
+          <div id="quizFeedbackBanner" class="hidden p-3 rounded-xl text-xs font-bold transition flex items-center justify-between gap-2 shadow-xs">
             <!-- Populated dynamically by JS -->
           </div>
 
@@ -958,6 +985,10 @@
     
     let quizCurrentIndex = 0;
     let quizAnswers = Array(20).fill(null);
+    let quizFlagged = Array(20).fill(false);
+    let quizAudioEnabled = true;
+    let quizCurrentStreak = 0;
+    let quizBestStreak = 0;
     let currentGlossaryCategory = 'ALL';
 
     const anatomyData = {
@@ -1265,11 +1296,136 @@
       }
     }
 
+    // AUDIO FEEDBACK SYNTHESIZER (WEB AUDIO API)
+    function toggleQuizAudio() {
+      quizAudioEnabled = !quizAudioEnabled;
+      const icon = document.getElementById('audioIcon');
+      const text = document.getElementById('audioText');
+      if (quizAudioEnabled) {
+        if (icon) icon.className = "fa-solid fa-volume-high text-emerald-600";
+        if (text) text.innerText = "Suara: On";
+      } else {
+        if (icon) icon.className = "fa-solid fa-volume-xmark text-slate-400";
+        if (text) text.innerText = "Suara: Off";
+      }
+    }
+
+    function playAudioFeedback(type) {
+      if (!quizAudioEnabled) return;
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        if (type === 'correct') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+          osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.08); // E5
+          osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.16); // G5
+          gain.gain.setValueAtTime(0.15, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.35);
+        } else if (type === 'wrong') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(220, ctx.currentTime); // A3
+          osc.frequency.setValueAtTime(174.61, ctx.currentTime + 0.12); // F3
+          gain.gain.setValueAtTime(0.2, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.3);
+        } else if (type === 'finish') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+          osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
+          osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2);
+          osc.frequency.setValueAtTime(1046.50, ctx.currentTime + 0.3); // C6
+          gain.gain.setValueAtTime(0.2, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.6);
+        }
+      } catch (e) {
+        console.log('Audio feedback error:', e);
+      }
+    }
+
+    function toggleFlagQuestion() {
+      quizFlagged[quizCurrentIndex] = !quizFlagged[quizCurrentIndex];
+      renderQuizQuestion();
+    }
+
+    function renderQuizNavPills() {
+      const container = document.getElementById('quizNavPillsContainer');
+      if (!container) return;
+
+      container.innerHTML = quizQuestions.map((q, idx) => {
+        const isCurrent = (idx === quizCurrentIndex);
+        const ans = quizAnswers[idx];
+        const isFlagged = quizFlagged[idx];
+
+        let bgStyle = "bg-slate-100 text-slate-600 hover:bg-slate-200 border-slate-200";
+        
+        if (ans !== null) {
+          if (ans === q.correct) {
+            bgStyle = "bg-emerald-600 text-white font-bold border-emerald-600 shadow-xs";
+          } else {
+            bgStyle = "bg-red-500 text-white font-bold border-red-500 shadow-xs";
+          }
+        } else if (isFlagged) {
+          bgStyle = "bg-amber-400 text-slate-900 font-bold border-amber-500 shadow-xs";
+        }
+
+        let ringClass = isCurrent ? "ring-2 ring-emerald-500 ring-offset-1 font-black scale-105" : "";
+
+        return `
+          <button onclick="jumpToQuizQuestion(${idx})" title="Soal Nomor ${idx+1}" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl text-[11px] font-bold shrink-0 transition flex items-center justify-center border ${bgStyle} ${ringClass} cursor-pointer">
+            ${isFlagged ? '<i class="fa-solid fa-bookmark text-[9px]"></i>' : idx + 1}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function jumpToQuizQuestion(idx) {
+      quizCurrentIndex = idx;
+      renderQuizQuestion();
+    }
+
     function renderQuizQuestion() {
       const q = quizQuestions[quizCurrentIndex];
       document.getElementById('quizQuestionTracker').innerText = `Soal ${quizCurrentIndex + 1} / 20`;
       document.getElementById('quizCategoryBadge').innerText = 'Kategori: ' + q.category;
       document.getElementById('quizQuestionText').innerText = q.question;
+
+      // Update flag button state
+      const flagBtn = document.getElementById('btnFlagQuestion');
+      const flagText = document.getElementById('flagBtnText');
+      if (flagBtn && flagText) {
+        if (quizFlagged[quizCurrentIndex]) {
+          flagBtn.className = "text-[11px] font-bold text-amber-900 bg-amber-100 border border-amber-400 px-2 py-0.5 rounded-md transition cursor-pointer flex items-center gap-1 shadow-xs";
+          flagText.innerText = "Ditandai Ragu";
+        } else {
+          flagBtn.className = "text-[11px] font-semibold text-slate-500 hover:text-amber-600 px-2 py-0.5 rounded-md border border-slate-200 hover:border-amber-300 transition cursor-pointer flex items-center gap-1";
+          flagText.innerText = "Tandai Ragu";
+        }
+      }
+
+      // Update streak badge
+      const streakBadge = document.getElementById('quizStreakBadge');
+      if (streakBadge) {
+        if (quizCurrentStreak >= 2) {
+          streakBadge.innerText = `🔥 ${quizCurrentStreak} Benar Beruntun!`;
+          streakBadge.classList.remove('hidden');
+        } else {
+          streakBadge.classList.add('hidden');
+        }
+      }
+
+      renderQuizNavPills();
 
       const imgContainer = document.getElementById('quizImageContainer');
       if (q.image) {
@@ -1283,16 +1439,16 @@
       const selectedAns = quizAnswers[quizCurrentIndex];
 
       container.innerHTML = q.options.map((opt, idx) => {
-        let btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-left text-xs sm:text-sm transition flex items-center justify-between font-medium text-slate-700 leading-snug gap-2 cursor-pointer";
+        let btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 active:scale-[0.99] text-left text-xs sm:text-sm transition flex items-center justify-between font-medium text-slate-700 leading-snug gap-2 cursor-pointer";
         let iconHtml = `<span class="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center text-[10px] font-bold text-slate-500 shrink-0">${String.fromCharCode(65 + idx)}</span>`;
 
         if (selectedAns !== null) {
           if (idx === q.correct) {
-            btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-left text-xs sm:text-sm font-bold text-emerald-900 flex items-center justify-between leading-snug gap-2 cursor-default";
-            iconHtml = `<span class="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] shrink-0"><i class="fa-solid fa-check"></i></span>`;
+            btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-left text-xs sm:text-sm font-bold text-emerald-900 flex items-center justify-between leading-snug gap-2 cursor-default shadow-xs scale-[1.01] transition-all";
+            iconHtml = `<span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs shrink-0 shadow-xs animate-bounce"><i class="fa-solid fa-check"></i></span>`;
           } else if (idx === selectedAns) {
-            btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border-2 border-red-500 bg-red-50 text-left text-xs sm:text-sm font-bold text-red-900 flex items-center justify-between leading-snug gap-2 cursor-default";
-            iconHtml = `<span class="w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center text-[10px] shrink-0"><i class="fa-solid fa-xmark"></i></span>`;
+            btnStyle = "w-full p-2.5 sm:p-3 rounded-xl border-2 border-red-500 bg-red-50 text-left text-xs sm:text-sm font-bold text-red-900 flex items-center justify-between leading-snug gap-2 cursor-default shadow-xs transition-all";
+            iconHtml = `<span class="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center text-xs shrink-0 shadow-xs"><i class="fa-solid fa-xmark"></i></span>`;
           }
         }
 
@@ -1304,15 +1460,31 @@
         `;
       }).join('');
 
+      // Dynamic Feedback Banner
+      const feedbackBanner = document.getElementById('quizFeedbackBanner');
+      if (selectedAns !== null && feedbackBanner) {
+        feedbackBanner.classList.remove('hidden');
+        if (selectedAns === q.correct) {
+          feedbackBanner.className = "p-3 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-600 to-teal-600 text-white flex items-center justify-between gap-2 shadow-md animate-pulse";
+          feedbackBanner.innerHTML = `<span><i class="fa-solid fa-circle-check text-emerald-200 mr-1.5"></i> 🎉 Jawaban Anda Benar! (+5 Poin)</span> <span class="text-[10px] bg-white/20 px-2.5 py-0.5 rounded-full font-extrabold">Mantap!</span>`;
+        } else {
+          feedbackBanner.className = "p-3 rounded-xl text-xs font-bold bg-gradient-to-r from-red-600 to-amber-600 text-white flex items-center justify-between gap-2 shadow-md";
+          feedbackBanner.innerHTML = `<span><i class="fa-solid fa-circle-xmark text-red-200 mr-1.5"></i> 💡 Jawaban Kurang Tepat</span> <span class="text-[10px] bg-white/20 px-2.5 py-0.5 rounded-full font-extrabold">Cek Pembahasan</span>`;
+        }
+      } else if (feedbackBanner) {
+        feedbackBanner.classList.add('hidden');
+      }
+
+      // Explanation Box
       const expBox = document.getElementById('quizExplanationBox');
       if (selectedAns !== null) {
         expBox.classList.remove('hidden');
         if (selectedAns === q.correct) {
           expBox.className = "p-3.5 rounded-xl text-xs space-y-1 bg-emerald-50 border border-emerald-200 text-emerald-900";
-          document.getElementById('quizExplanationTitle').innerText = "Jawaban Tepat!";
+          document.getElementById('quizExplanationTitle').innerText = "Pembahasan (Jawaban Benar):";
         } else {
           expBox.className = "p-3.5 rounded-xl text-xs space-y-1 bg-red-50 border border-red-200 text-red-900";
-          document.getElementById('quizExplanationTitle').innerText = "Jawaban Kurang Tepat";
+          document.getElementById('quizExplanationTitle').innerText = "Pembahasan Jawaban:";
         }
         document.getElementById('quizExplanationBody').innerText = q.explanation;
       } else {
@@ -1329,7 +1501,18 @@
     }
 
     function selectQuizAnswer(idx) {
+      const q = quizQuestions[quizCurrentIndex];
       quizAnswers[quizCurrentIndex] = idx;
+
+      if (idx === q.correct) {
+        quizCurrentStreak++;
+        if (quizCurrentStreak > quizBestStreak) quizBestStreak = quizCurrentStreak;
+        playAudioFeedback('correct');
+      } else {
+        quizCurrentStreak = 0;
+        playAudioFeedback('wrong');
+      }
+
       renderQuizQuestion();
       updateProgressTracker();
     }
@@ -1348,6 +1531,8 @@
       quizQuestions.forEach((q, i) => { if (quizAnswers[i] === q.correct) correct++; });
       const score = Math.round((correct / quizQuestions.length) * 100);
 
+      playAudioFeedback('finish');
+
       document.getElementById('quizCard').classList.add('hidden');
       document.getElementById('quizResultCard').classList.remove('hidden');
       document.getElementById('resultScore').innerText = score;
@@ -1357,6 +1542,8 @@
     function restartQuiz() {
       quizCurrentIndex = 0;
       quizAnswers = Array(20).fill(null);
+      quizFlagged = Array(20).fill(false);
+      quizCurrentStreak = 0;
       document.getElementById('quizResultCard').classList.add('hidden');
       document.getElementById('quizCard').classList.remove('hidden');
       renderQuizQuestion();

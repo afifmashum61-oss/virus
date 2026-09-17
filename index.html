@@ -156,9 +156,8 @@
           Pada akhir fase E, peserta didik mampu mengidentifikasi struktur virus, menganalisis proses reproduksi (litik & lisogenik), mengevaluasi peranan virus, serta merumuskan upaya pencegahan.
         </p>
 
-        <!-- PINTASAN TOMBOL INTERAKTIF (SHORTCUTS) -->
+        <!-- PINTASAN TOMBOL INTERAKTIF -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
-          <!-- Pintasan 1: Ciri & Struktur -->
           <button onclick="switchTab('struktur')" class="bg-emerald-50 hover:bg-emerald-100 active:scale-95 transition-all p-2.5 rounded-xl border border-emerald-200 text-center cursor-pointer group shadow-xs">
             <i class="fa-solid fa-dna text-emerald-600 text-base mb-1 group-hover:scale-110 transition-transform"></i>
             <p class="text-[11px] font-bold text-slate-800 flex items-center justify-center gap-1">
@@ -166,7 +165,6 @@
             </p>
           </button>
           
-          <!-- Pintasan 2: Siklus Replikasi -->
           <button onclick="switchTab('replikasi')" class="bg-teal-50 hover:bg-teal-100 active:scale-95 transition-all p-2.5 rounded-xl border border-teal-200 text-center cursor-pointer group shadow-xs">
             <i class="fa-solid fa-arrows-spin text-teal-600 text-base mb-1 group-hover:scale-110 transition-transform"></i>
             <p class="text-[11px] font-bold text-slate-800 flex items-center justify-center gap-1">
@@ -174,7 +172,6 @@
             </p>
           </button>
           
-          <!-- Pintasan 3: Peranan Virus -->
           <button onclick="switchTab('peranan')" class="bg-amber-50 hover:bg-amber-100 active:scale-95 transition-all p-2.5 rounded-xl border border-amber-200 text-center cursor-pointer group shadow-xs">
             <i class="fa-solid fa-shield-virus text-amber-600 text-base mb-1 group-hover:scale-110 transition-transform"></i>
             <p class="text-[11px] font-bold text-slate-800 flex items-center justify-center gap-1">
@@ -182,7 +179,6 @@
             </p>
           </button>
           
-          <!-- Pintasan 4: Pencegahan -->
           <button onclick="switchTabAndScroll('peranan', 'secPencegahan')" class="bg-blue-50 hover:bg-blue-100 active:scale-95 transition-all p-2.5 rounded-xl border border-blue-200 text-center cursor-pointer group shadow-xs">
             <i class="fa-solid fa-syringe text-blue-600 text-base mb-1 group-hover:scale-110 transition-transform"></i>
             <p class="text-[11px] font-bold text-slate-800 flex items-center justify-center gap-1">
@@ -508,41 +504,6 @@
         </div>
 
       </div>
-
-      <!-- Perbedaan Litik vs Lisogenik Table -->
-      <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-3">
-        <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
-          <i class="fa-solid fa-table-list text-emerald-600"></i> Perbandingan Litik vs Lisogenik
-        </h3>
-        <div class="overflow-x-auto">
-          <table class="w-full text-xs text-left border-collapse">
-            <thead>
-              <tr class="bg-slate-100 text-slate-800 border-b border-slate-200">
-                <th class="p-2 font-bold whitespace-nowrap">Faktor</th>
-                <th class="p-2 font-bold text-emerald-700 whitespace-nowrap">Siklus Litik</th>
-                <th class="p-2 font-bold text-teal-700 whitespace-nowrap">Siklus Lisogenik</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100 text-slate-600">
-              <tr>
-                <td class="p-2 font-semibold text-slate-800">Inang</td>
-                <td class="p-2 text-red-600 font-medium">Lisis / Pecah</td>
-                <td class="p-2 text-emerald-600 font-medium">Tetap Hidup</td>
-              </tr>
-              <tr>
-                <td class="p-2 font-semibold text-slate-800">DNA</td>
-                <td class="p-2">Menguasai inang</td>
-                <td class="p-2">Menyatu (Profag)</td>
-              </tr>
-              <tr>
-                <td class="p-2 font-semibold text-slate-800">Waktu</td>
-                <td class="p-2">Cepat</td>
-                <td class="p-2">Mengikuti sel inang</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
     </section>
 
     <!-- ========================================== -->
@@ -652,7 +613,7 @@
 
       </div>
 
-      <!-- SECTION PENCEGAHAN (BAGIAN TARGET SCROLL PINTASAN PENCEGAHAN) -->
+      <!-- SECTION PENCEGAHAN -->
       <div id="secPencegahan" class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 space-y-3">
         <h3 class="text-xs sm:text-sm font-bold text-emerald-900 flex items-center gap-2">
           <i class="fa-solid fa-shield-halved text-emerald-700 text-base"></i> Upaya Pencegahan Penyakit Virus
@@ -676,7 +637,7 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 5: KUIS EVALUASI (20 SOAL BERGAMBAR) -->
+    <!-- TAB 5: KUIS EVALUASI & GLOSARIUM LENGKAP -->
     <!-- ========================================== -->
     <section id="tab-kuis" class="tab-content space-y-5">
       
@@ -686,7 +647,7 @@
           <i class="fa-solid fa-pen-to-square mr-1"></i> Uji Pemahaman (20 Soal)
         </button>
         <button id="btnSubGlosarium" onclick="toggleQuizSubTab('glosarium')" class="flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer">
-          <i class="fa-solid fa-book mr-1"></i> Glosarium
+          <i class="fa-solid fa-book-bookmark mr-1"></i> Glosarium Lengkap
         </button>
       </div>
 
@@ -771,20 +732,46 @@
 
       </div>
 
-      <!-- GLOSARIUM SECTION -->
+      <!-- GLOSARIUM SECTION (KATA KUNCI & PENJELASAN LENGKAP) -->
       <div id="sectionGlosarium" class="hidden space-y-3.5">
-        <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-2">
-          <h2 class="font-bold text-slate-900 text-xs sm:text-base flex items-center gap-1.5">
-            <i class="fa-solid fa-book-bookmark text-emerald-600"></i> Kamus Istilah Biologi Virus
-          </h2>
+        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <h2 class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+              <i class="fa-solid fa-book-bookmark text-emerald-600"></i> Kamus Istilah Biologi Virus
+            </h2>
+            <span id="glossaryCountBadge" class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full">
+              32 Istilah
+            </span>
+          </div>
+
+          <!-- Search Bar -->
           <div class="relative">
-            <input type="text" id="glossarySearchInput" onkeyup="filterGlossary()" placeholder="Cari istilah..." class="w-full pl-8 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500">
-            <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+            <input 
+              type="text" 
+              id="glossarySearchInput" 
+              onkeyup="filterGlossary()" 
+              placeholder="Cari kata kunci (contoh: Kapsid, Profag, Litik, Retrovirus)..." 
+              class="w-full pl-9 pr-9 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+            >
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-slate-400 text-xs"></i>
+            <button onclick="clearGlossarySearch()" id="btnClearGlossarySearch" class="hidden absolute right-3 top-3 text-slate-400 hover:text-slate-600 text-xs">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+          </div>
+
+          <!-- Category Quick Filter Pills -->
+          <div class="flex flex-wrap gap-1.5 pt-1" id="glossaryCategoryPills">
+            <button onclick="filterGlossaryCategory('ALL')" class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-emerald-600 text-white shadow-xs">Semua</button>
+            <button onclick="filterGlossaryCategory('Struktur')" class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700">Struktur</button>
+            <button onclick="filterGlossaryCategory('Replikasi')" class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700">Replikasi</button>
+            <button onclick="filterGlossaryCategory('Penyakit')" class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700">Penyakit</button>
+            <button onclick="filterGlossaryCategory('Medis')" class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700">Medis & Biotek</button>
           </div>
         </div>
 
-        <div id="glossaryContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-          <!-- Populated by JS -->
+        <!-- Glossary Items Grid Container -->
+        <div id="glossaryContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <!-- Dynamic items populated by JS -->
         </div>
       </div>
 
@@ -844,6 +831,7 @@
     
     let quizCurrentIndex = 0;
     let quizAnswers = Array(20).fill(null);
+    let currentGlossaryCategory = 'ALL';
 
     const anatomyData = {
       bakteriofag: [
@@ -939,41 +927,11 @@
         correct: 0,
         explanation: 'Vaksin memicu terbentuknya antibodi spesifik dan sel memori imun.'
       },
-      {
-        category: 'Variasi Bentuk Virus',
-        question: '6. Virus yang memiliki bentuk kapsid Polihedral (Icosahedral) ditunjukkan oleh contoh...',
-        options: ['Adenovirus & Poliovirus', 'TMV (Batang)', 'Rabies (Peluru)', 'Bakteriofag T4 (Kompleks)'],
-        correct: 0,
-        explanation: 'Adenovirus dan Poliovirus berbentuk polihedral simetris.'
-      },
-      {
-        category: 'Siklus Lisogenik (Profag)',
-        question: '7. Sisipan DNA virus yang menyatu kovalen pada kromosom bakteri pada siklus lisogenik disebut...',
-        options: ['Virion Bebas', 'Kapsomer', 'Profag', 'Bakteriofag Utuh'],
-        correct: 2,
-        explanation: 'Profag adalah DNA virus yang terintegrasi pada kromosom bakteri inang.'
-      },
-      {
-        category: 'Vektor Terapi Gen',
-        question: '8. Penggunaan virus yang dimodifikasi dalam terapi gen berfungsi sebagai...',
-        options: ['Vektor pengangkut gen normal ke sel target pasien', 'Penghancur sel darah putih', 'Obat antibiotik', 'Biopestisida'],
-        correct: 0,
-        explanation: 'Virus dimanfaatkan sebagai vektor pengantar gen normal.'
-      },
-      {
-        category: 'Biopestisida Baculovirus',
-        question: '9. Manfaat Baculovirus bagi petani di bidang pertanian adalah...',
-        options: ['Pupuk kimia buatan', 'Biopestisida alami pembasmi hama serangga', 'Gen pengubah warna bunga', 'Pemicu penyakit kerdil'],
-        correct: 1,
-        explanation: 'Baculovirus dimanfaatkan sebagai biopestisida alami.'
-      },
-      {
-        category: 'Penyakit Tumbuhan Tungro',
-        question: '10. Penyakit Tungro pada tanaman padi ditularkan oleh vektor serangga...',
-        options: ['Nyamuk Aedes', 'Serangga Wereng Hijau (Nephotettix virescens)', 'Lalat Buah', 'Tikus Sawah'],
-        correct: 1,
-        explanation: 'Virus Tungro ditularkan oleh serangga wereng hijau.'
-      },
+      { category: 'Variasi Bentuk Virus', question: '6. Virus yang memiliki bentuk kapsid Polihedral (Icosahedral) ditunjukkan oleh contoh...', options: ['Adenovirus & Poliovirus', 'TMV (Batang)', 'Rabies (Peluru)', 'Bakteriofag T4 (Kompleks)'], correct: 0, explanation: 'Adenovirus dan Poliovirus berbentuk polihedral simetris.' },
+      { category: 'Siklus Lisogenik (Profag)', question: '7. Sisipan DNA virus yang menyatu kovalen pada kromosom bakteri pada siklus lisogenik disebut...', options: ['Virion Bebas', 'Kapsomer', 'Profag', 'Bakteriofag Utuh'], correct: 2, explanation: 'Profag adalah DNA virus yang terintegrasi pada kromosom bakteri inang.' },
+      { category: 'Vektor Terapi Gen', question: '8. Penggunaan virus yang dimodifikasi dalam terapi gen berfungsi sebagai...', options: ['Vektor pengangkut gen normal ke sel target pasien', 'Penghancur sel darah putih', 'Obat antibiotik', 'Biopestisida'], correct: 0, explanation: 'Virus dimanfaatkan sebagai vektor pengantar gen normal.' },
+      { category: 'Biopestisida Baculovirus', question: '9. Manfaat Baculovirus bagi petani di bidang pertanian adalah...', options: ['Pupuk kimia buatan', 'Biopestisida alami pembasmi hama serangga', 'Gen pengubah warna bunga', 'Pemicu penyakit kerdil'], correct: 1, explanation: 'Baculovirus dimanfaatkan sebagai biopestisida alami.' },
+      { category: 'Penyakit Tumbuhan Tungro', question: '10. Penyakit Tungro pada tanaman padi ditularkan oleh vektor serangga...', options: ['Nyamuk Aedes', 'Serangga Wereng Hijau (Nephotettix virescens)', 'Lalat Buah', 'Tikus Sawah'], correct: 1, explanation: 'Virus Tungro ditularkan oleh serangga wereng hijau.' },
       { category: 'Sifat Aseluler', question: '11. Mengapa virus dikategorikan sebagai makhluk aseluler dan benda peralihan?', options: ['Memiliki sel lengkap', 'Tidak memiliki sel/sitoplasma, dapat dikristalkan namun memiliki materi genetik', 'Bereproduksi mandiri', 'Memiliki flagela'], correct: 1, explanation: 'Virus tidak memiliki sel dan dapat dikristalkan.' },
       { category: 'Sejarah Virus', question: '12. Ilmuwan yang pertama kali mengkristalkan TMV adalah...', options: ['Mayer', 'Ivanovsky', 'Beijerinck', 'Wendell Stanley'], correct: 3, explanation: 'Stanley mengkristalkan TMV pada 1935.' },
       { category: 'HIV/AIDS', question: '13. Virus HIV menyerang sel...', options: ['Eritrosit', 'Limfosit T (CD4+)', 'Trombosit', 'Neuron'], correct: 1, explanation: 'HIV merusak Limfosit T pembantu.' },
@@ -984,6 +942,42 @@
       { category: 'Interferon', question: '18. Protein glikoprotein pencegah replikasi virus pada sel tetangga adalah...', options: ['Histamin', 'Interferon', 'Hibridoma', 'Hemoglobin'], correct: 1, explanation: 'Interferon melindungi sel tetangga.' },
       { category: 'Retrovirus', question: '19. Virus RNA berenzim Reverse Transcriptase adalah...', options: ['Adenovirus', 'Retrovirus', 'Bakteriofag', 'Parvovirus'], correct: 1, explanation: 'Retrovirus menyintesis DNA dari RNA.' },
       { category: 'Penyakit PMK', question: '20. Penyakit Mulut dan Kuku (PMK) disebabkan oleh...', options: ['Aphthovirus', 'NCD', 'Papillomavirus', 'Rabies'], correct: 0, explanation: 'PMK disebabkan oleh Aphthovirus.' }
+    ];
+
+    // GLOSSARY DATA EXPANDED (32 KATA KUNCI & PENJELASAN LENGKAP)
+    const glossaryItems = [
+      { term: 'Adsorpsi', category: 'Replikasi', def: 'Tahap penempelan serabut ekor virus pada molekul reseptor spesifik di permukaan dinding sel inang (lock & key).' },
+      { term: 'Antivirus', category: 'Medis', def: 'Senyawa obat medis (seperti Oseltamivir, Acyclovir) yang bekerja spesifik menghambat proses replikasi virus dalam sel inang.' },
+      { term: 'Aseluler', category: 'Struktur', def: 'Sifat khas virus yang tidak memiliki struktur sel biasa (tanpa membran sel, sitoplasma, dan organel).' },
+      { term: 'Bakteriofag (Phage)', category: 'Struktur', def: 'Virus kompleks spesifik yang menyerang dan bereplikasi di dalam sel bakteri (contoh: Bakteriofag T4 menginfeksi E. coli).' },
+      { term: 'Baseplate (Papan Alas)', category: 'Struktur', def: 'Landasan struktur bagian bawah ekor bakteriofag yang menopang jarum penusuk dan titik tumpu serabut ekor.' },
+      { term: 'Baculovirus', category: 'Medis', def: 'Kelompok virus yang dimodifikasi sebagai biopestisida alami untuk membasmi serangga hama pertanian.' },
+      { term: 'Contagium Vivum Fluidum', category: 'Sejarah', def: 'Istilah penemuan Martinus Beijerinck (1897) yang menggambarkan agen infeksius berupa cairan hidup mikroskopis.' },
+      { term: 'Corona / Spike (Spik S)', category: 'Struktur', def: 'Tonjolan glikoprotein luar Coronavirus yang berfungsi mengikat reseptor ACE2 pada sel epitel pernapasan manusia.' },
+      { term: 'DNA Virus', category: 'Struktur', def: 'Virus dengan genom berupa asam deoksiribonukleat (dsDNA / ssDNA) seperti Bakteriofag, Adenovirus, dan Herpesvirus.' },
+      { term: 'Eklifase / Sintesis', category: 'Replikasi', def: 'Tahap replikasi di mana DNA virus menguasai mesin sel inang untuk memproduksi komponen virus baru secara masif.' },
+      { term: 'Envelope (Selubung Lipid)', category: 'Struktur', def: 'Membran lipid berglikoprotein yang membungkus kapsid virus (Influenza & SARS-CoV-2), peka terhadap sabun & alkohol.' },
+      { term: 'Glikoprotein', category: 'Struktur', def: 'Senyawa gabungan karbohidrat dan protein di permukaan membran selubung virus untuk mengenali molekul inang.' },
+      { term: 'HIV (Retrovirus)', category: 'Penyakit', def: 'Human Immunodeficiency Virus, virus RNA yang menyerang sel darah putih (Limfosit T CD4+) memicu penyakit AIDS.' },
+      { term: 'Induksi', category: 'Replikasi', def: 'Proses terlepasnya DNA profag dari kromosom bakteri akibat pemicu radiasi UV/kimia sehingga berpindah ke siklus litik.' },
+      { term: 'Interferon', category: 'Medis', def: 'Senyawa glikoprotein yang diproduksi sel terinfeksi untuk memperingatkan sel tetangga agar kebal dari replikasi virus.' },
+      { term: 'Kapsid', category: 'Struktur', def: 'Selubung pelindung berupa untaian protein yang membungkus materi genetik (DNA/RNA) virus.' },
+      { term: 'Kapsomer', category: 'Struktur', def: 'Sub-unit atau unit-unit kecil protein penyusun kapsid.' },
+      { term: 'Lisozim', category: 'Replikasi', def: 'Enzim hidrolitik pemecah peptidoglikan dinding sel bakteri saat penembusan penetrasi dan pelepasan lisis.' },
+      { term: 'Lisis', category: 'Replikasi', def: 'Peristiwa pecah dan hancurnya sel inang di akhir siklus litik yang melepaskan ratusan virion baru.' },
+      { term: 'Profag', category: 'Replikasi', def: 'Sisipan materi genetik (DNA) virus yang telah terintegrasi dan menyatu kovalen ke dalam rantai DNA kromosom bakteri.' },
+      { term: 'Prion', category: 'Struktur', def: 'Agen infeksius mikroskopis berupa protein terlipat abnormal tanpa materi genetik asam nukleat.' },
+      { term: 'Retrovirus', category: 'Replikasi', def: 'Kelompok virus RNA berenzim Reverse Transcriptase untuk merubah RNA menjadi DNA di dalam sel inang.' },
+      { term: 'Reverse Transcriptase', category: 'Replikasi', def: 'Enzim spesifik Retrovirus yang mengkatalisis sintesis untai ganda DNA dari cetakan asam ribonukleat (RNA).' },
+      { term: 'Siklus Lisogenik', category: 'Replikasi', def: 'Daur reproduksi virus di mana DNA virus menyatu dengan DNA inang menjadi profag tanpa mematikan sel inang.' },
+      { term: 'Siklus Litik', category: 'Replikasi', def: 'Daur reproduksi virus yang cepat dan diakhiri dengan pemecahan (lisis) serta kematian sel inang.' },
+      { term: 'TMV (Tobacco Mosaic Virus)', category: 'Penyakit', def: 'Virus tanaman berbentuk heliks batang yang menyebabkan bercak mozaik kuning pada daun tembakau.' },
+      { term: 'Tungro', category: 'Penyakit', def: 'Penyakit kerdil pada tanaman padi akibat infeksi virus Tungro yang ditularkan oleh vektor serangga wereng hijau.' },
+      { term: 'Vaksin Attenuated', category: 'Medis', def: 'Vaksin yang dibuat dari patogen virus yang telah dilemahkan untuk melatih antibodi imun spesifik.' },
+      { term: 'Vaksin Inactivated', category: 'Medis', def: 'Vaksin yang dibuat dari partikel virus yang telah dimatikan menggunakan zat kimia atau pemanasan.' },
+      { term: 'Vektor Terapi Gen', category: 'Medis', def: 'Penggunaan virus yang dinonaktifkan keganasannya untuk mengangkut gen normal ke sel target pasien penyakit genetik.' },
+      { term: 'Virion', category: 'Struktur', def: 'Satu partikel virus utuh dan lengkap yang berada di luar sel inang dan mampu menginfeksi sel baru.' },
+      { term: 'Viroid', category: 'Struktur', def: 'Agen infeksius tanaman berupa molekul tunggal RNA pendek tanpa selubung kapsid protein.' }
     ];
 
     function switchTab(tabId) {
@@ -1221,22 +1215,77 @@
       renderQuizQuestion();
     }
 
-    function renderGlossary(filterText = '') {
+    // GLOSSARY ENGINE (32 KATA KUNCI & SEARCH & FILTER)
+    function renderGlossary() {
+      const searchText = (document.getElementById('glossarySearchInput')?.value || '').toLowerCase().trim();
+      const clearBtn = document.getElementById('btnClearGlossarySearch');
+      if (clearBtn) {
+        if (searchText.length > 0) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
+
+      const filtered = glossaryItems.filter(item => {
+        const matchCategory = (currentGlossaryCategory === 'ALL') || (item.category === currentGlossaryCategory);
+        const matchQuery = item.term.toLowerCase().includes(searchText) || item.def.toLowerCase().includes(searchText);
+        return matchCategory && matchQuery;
+      });
+
       const container = document.getElementById('glossaryContainer');
-      const filtered = glossaryItems.filter(item => 
-        item.term.toLowerCase().includes(filterText.toLowerCase()) || 
-        item.def.toLowerCase().includes(filterText.toLowerCase())
-      );
+      const badge = document.getElementById('glossaryCountBadge');
+      if (badge) badge.innerText = `${filtered.length} Istilah`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-1 sm:col-span-2 bg-white rounded-2xl p-6 border border-slate-200 text-center space-y-2">
+            <i class="fa-solid fa-book-open-reader text-slate-300 text-3xl mb-1"></i>
+            <h4 class="font-bold text-sm text-slate-700">Istilah Tidak Ditemukan</h4>
+            <p class="text-xs text-slate-500">Coba kata kunci lain atau pilih kategori "Semua".</p>
+          </div>
+        `;
+        return;
+      }
+
       container.innerHTML = filtered.map(item => `
-        <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm space-y-0.5">
-          <h4 class="font-bold text-xs text-emerald-800">${item.term}</h4>
-          <p class="text-[11px] text-slate-600 leading-relaxed">${item.def}</p>
+        <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-xs hover:border-emerald-300 transition space-y-1.5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-1 mb-1">
+              <h4 class="font-extrabold text-xs sm:text-sm text-emerald-800 flex items-center gap-1.5">
+                <i class="fa-solid fa-bookmark text-emerald-500 text-[11px]"></i> ${item.term}
+              </h4>
+              <span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 shrink-0">
+                ${item.category}
+              </span>
+            </div>
+            <p class="text-[11px] sm:text-xs text-slate-600 leading-relaxed">${item.def}</p>
+          </div>
         </div>
       `).join('');
     }
 
     function filterGlossary() {
-      renderGlossary(document.getElementById('glossarySearchInput').value);
+      renderGlossary();
+    }
+
+    function clearGlossarySearch() {
+      const input = document.getElementById('glossarySearchInput');
+      if (input) input.value = '';
+      renderGlossary();
+    }
+
+    function filterGlossaryCategory(cat) {
+      currentGlossaryCategory = cat;
+      const pillsContainer = document.getElementById('glossaryCategoryPills');
+      if (pillsContainer) {
+        const btns = pillsContainer.querySelectorAll('button');
+        btns.forEach(b => {
+          if ((cat === 'ALL' && b.innerText === 'Semua') || (b.innerText.includes(cat))) {
+            b.className = "px-2.5 py-1 rounded-lg text-[10px] font-bold bg-emerald-600 text-white shadow-xs";
+          } else {
+            b.className = "px-2.5 py-1 rounded-lg text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700";
+          }
+        });
+      }
+      renderGlossary();
     }
 
     function updateProgressTracker() {

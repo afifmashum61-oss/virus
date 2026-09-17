@@ -440,26 +440,67 @@
           <i class="fa-solid fa-arrows-spin text-teal-600"></i> Replikasi Virus: Litik vs Lisogenik
         </h2>
         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-          Virus bereplikasi menggunakan mesin metabolisme sel inang. Pelajari perbandingan kedua siklus!
+          Pelajari tahapan reproduksi Bakteriofag melalui diagram skematik Kurikulum Merdeka dan simulasi stepper di bawah ini!
         </p>
+      </div>
+
+      <!-- MAIN DIAGRAM CARD FROM TEXTBOOK -->
+      <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-3.5">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+          <div class="flex items-center gap-2 text-slate-900 font-bold text-xs sm:text-sm">
+            <i class="fa-solid fa-diagram-project text-emerald-600"></i>
+            <h3>Diagram Reproduksi Bakteriofage (Siklus Litik & Lisogenik)</h3>
+          </div>
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+            Diagram Materi
+          </span>
+        </div>
+
+        <div class="relative overflow-hidden rounded-xl border border-slate-200 bg-slate-900 p-2 group cursor-pointer" onclick="openDiagramModal()">
+          <img src="img/siklus_litik_lisogenik.jpg" alt="Diagram Reproduksi Bakteriofag Siklus Litik dan Lisogenik" class="w-full h-auto max-h-[380px] rounded-lg shadow-sm mx-auto object-contain transition duration-300 group-hover:scale-[1.02]">
+          <div class="absolute bottom-3 right-3 bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-semibold px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-md">
+            <i class="fa-solid fa-magnifying-glass-plus text-emerald-400"></i> Ketuk Gambar untuk Memperbesar (HD)
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] pt-1">
+          <div class="bg-red-50 border border-red-200 p-3 rounded-xl space-y-1">
+            <p class="font-bold text-red-800 flex items-center gap-1.5 text-xs">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-600 shrink-0"></span> Siklus Litik (Area Merah - Kiri)
+            </p>
+            <p class="text-slate-600 leading-relaxed">
+              <strong>4 Tahap Utama:</strong> (1) Adsorpsi &rarr; (2) Penetrasi &rarr; (3) Replikasi & Sintesis &rarr; (4) Pematangan & Lisis (Sel inang pecah).
+            </p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 p-3 rounded-xl space-y-1">
+            <p class="font-bold text-blue-800 flex items-center gap-1.5 text-xs">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-600 shrink-0"></span> Siklus Lisogenik (Area Biru - Kanan)
+            </p>
+            <p class="text-slate-600 leading-relaxed">
+              <strong>5 Tahap Utama:</strong> (1) Adsorpsi &rarr; (2) Penetrasi &rarr; (3) Sisipan Profage &rarr; (4) Pembelahan Sel &rarr; (5) Induksi ke Litik.
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- Mode Selector Tabs -->
       <div class="grid grid-cols-2 gap-2.5">
         <button id="btnSiklusLitik" onclick="selectCycleMode('litik')" class="p-3 sm:p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/50 text-left transition shadow-sm cursor-pointer">
           <div class="flex items-center justify-between mb-1">
-            <span class="font-bold text-xs sm:text-sm text-emerald-900">Siklus Litik</span>
+            <span class="font-bold text-xs sm:text-sm text-emerald-900">Siklus Litik (4 Tahap)</span>
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
           </div>
-          <p class="text-[11px] text-emerald-700 leading-tight">Sel inang lisis (pecah) di akhir proses.</p>
+          <p class="text-[11px] text-emerald-700 leading-tight">Sel inang pecah (lisis) melepaskan virus baru.</p>
         </button>
 
         <button id="btnSiklusLisogenik" onclick="selectCycleMode('lisogenik')" class="p-3 sm:p-4 rounded-2xl border-2 border-slate-200 bg-white text-left transition hover:border-teal-300 cursor-pointer">
           <div class="flex items-center justify-between mb-1">
-            <span class="font-bold text-xs sm:text-sm text-slate-800">Siklus Lisogenik</span>
+            <span class="font-bold text-xs sm:text-sm text-slate-800">Siklus Lisogenik (5 Tahap)</span>
             <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
           </div>
-          <p class="text-[11px] text-slate-500 leading-tight">DNA menyatu jadi profag, sel inang hidup.</p>
+          <p class="text-[11px] text-slate-500 leading-tight">DNA menyatu jadi profag, sel inang hidup & membelah.</p>
         </button>
       </div>
 
@@ -473,10 +514,10 @@
         <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-3">
           <div class="flex items-center justify-between gap-2">
             <span id="cycleStepNumber" class="px-2.5 py-0.5 bg-emerald-600 text-white font-bold text-[11px] rounded-full shrink-0">
-              Tahap 1 / 5
+              Tahap 1 / 4
             </span>
             <span id="cycleStepName" class="text-xs sm:text-sm font-bold text-emerald-800 text-right truncate">
-              Adsorpsi (Penempelan)
+              1. Adsorpsi (Penempelan)
             </span>
           </div>
 
@@ -485,12 +526,12 @@
           </div>
 
           <p id="cycleStepDetail" class="text-xs sm:text-sm text-slate-700 leading-relaxed">
-            Serabut ekor bakteriofag menempel secara spesifik pada reseptor dinding sel bakteri.
+            Fage melekat pada suatu bakteri.
           </p>
 
           <div class="bg-white p-2.5 rounded-xl border border-slate-200 text-[11px] text-slate-600 flex items-start gap-1.5">
             <i class="fa-solid fa-circle-info text-teal-600 mt-0.5 shrink-0"></i>
-            <span id="cycleStepNote">Poin Kunci: Penempelan spesifik lock and key.</span>
+            <span id="cycleStepNote">Poin Kunci: Penempelan spesifik serabut ekor.</span>
           </div>
         </div>
 
@@ -850,17 +891,17 @@
 
     const cycleData = {
       litik: [
-        { num: 1, name: 'Adsorpsi (Penempelan)', note: 'Penempelan spesifik.', detail: 'Serabut ekor bakteriofag menempel pada reseptor sel bakteri.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-magnet text-xl text-emerald-400"></i><p class="text-xs font-bold text-emerald-200">1. Penempelan Serabut Ekor</p></div>` },
-        { num: 2, name: 'Penetrasi (Injeksi)', note: 'Enzim Lisozim melubangi dinding sel.', detail: 'Selubung ekor berkontraksi menyuntikkan DNA virus masuk sel inang.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-syringe text-xl text-red-400 animate-bounce"></i><p class="text-xs font-bold text-red-200">2. Injeksi DNA Virus</p></div>` },
-        { num: 3, name: 'Sintesis (Replikasi)', note: 'DNA inang dihancurkan.', detail: 'DNA virus menyintesis salinan DNA dan kapsid baru.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-dna text-xl text-amber-400 animate-spin"></i><p class="text-xs font-bold text-amber-200">3. Replikasi Asam Nukleat</p></div>` },
-        { num: 4, name: 'Perakitan (Assembly)', note: 'Dirakit jadi virion utuh.', detail: 'Komponen virus dirakit menjadi ratusan virus baru utuh.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-gears text-xl text-teal-400"></i><p class="text-xs font-bold text-teal-200">4. Perakitan Virion Utuh</p></div>` },
-        { num: 5, name: 'Lisis (Pecah)', note: 'Sel inang pecah dan mati.', detail: 'Enzim lisozim memecahkan dinding sel bakteri.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-burst text-2xl text-red-500 animate-ping"></i><p class="text-xs font-bold text-red-300">5. Sel Inang Lisis (Pecah)</p></div>` }
+        { num: 1, name: '1. Adsorpsi (Penempelan)', note: 'Fage melekat pada suatu bakteri.', detail: 'Tahap 1: Fage melekat secara spesifik pada reseptor permukaan sel bakteri inang.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-magnet text-2xl text-emerald-400 mb-1"></i><p class="text-xs font-bold text-emerald-200">1. Tahap Adsorpsi</p><p class="text-[10px] text-slate-300">Fage melekat pada suatu bakteri</p></div>` },
+        { num: 2, name: '2. Penetrasi (Injeksi)', note: 'DNA fage dimasukkan ke sel inang.', detail: 'Tahap 2: Selubung ekor berkontraksi & menginjeksikan materi genetik DNA fage ke dalam sel inang.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-syringe text-2xl text-red-400 animate-bounce mb-1"></i><p class="text-xs font-bold text-red-200">2. Tahap Penetrasi</p><p class="text-[10px] text-slate-300">DNA fage dimasukkan ke dalam sel inang</p></div>` },
+        { num: 3, name: '3. Replikasi & Sintesis', note: 'Sel membuat komponen virus.', detail: 'Tahap 3: DNA fage menguasai sel inang dan mengarahkan sel untuk membuat komponen dan asam nukleat virus baru.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-dna text-2xl text-amber-400 animate-spin mb-1"></i><p class="text-xs font-bold text-amber-200">3. Tahap Replikasi & Sintesis</p><p class="text-[10px] text-slate-300">Sel membuat komponen virus</p></div>` },
+        { num: 4, name: '4. Pematangan & Lisis', note: 'Partikel virus utuh terbentuk & sel inang pecah.', detail: 'Tahap 4: Partikel virus baru dirakit secara utuh dan enzim lisozim memecah (lisis) sel bakteri untuk melepaskan ratusan fage baru.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-burst text-3xl text-red-500 animate-ping mb-1"></i><p class="text-xs font-bold text-red-300">4. Tahap Pematangan & Lisis</p><p class="text-[10px] text-slate-300">Terbentuk partikel virus utuh & sel inang pecah</p></div>` }
       ],
       lisogenik: [
-        { num: 1, name: 'Adsorpsi & Penetrasi', note: 'Tahap awal penempelan.', detail: 'Virus menempel dan menyuntikkan DNA.', graphic: `<div class="text-emerald-400 text-xs font-bold text-center"><i class="fa-solid fa-shield-virus text-xl mb-1"></i><br>Adsorpsi & Penetrasi</div>` },
-        { num: 2, name: 'Penggabungan (Profag)', note: 'DNA virus menyatu jadi profag.', detail: 'DNA virus menyisip pada DNA bakteri membentuk Profag.', graphic: `<div class="text-teal-300 text-xs font-bold text-center"><i class="fa-solid fa-link text-xl mb-1"></i><br>DNA Virus + Inang = Profag</div>` },
-        { num: 3, name: 'Pembelahan Sel Inang', note: 'Profag terduplikasi.', detail: 'Bakteri membelah membawa DNA profag.', graphic: `<div class="text-blue-300 text-xs font-bold text-center"><i class="fa-solid fa-clone text-xl mb-1"></i><br>Bakteri Membelah Bersama Profag</div>` },
-        { num: 4, name: 'Induksi (Masuk Litik)', note: 'Radiasi memicu profag lepas.', detail: 'Profag lepas dari DNA inang dan masuk ke siklus litik.', graphic: `<div class="text-amber-300 text-xs font-bold text-center"><i class="fa-solid fa-bolt text-xl mb-1"></i><br>Profag Lepas Memicu Litik</div>` }
+        { num: 1, name: '1. Adsorpsi (Penempelan)', note: 'Fage melekat pada sel bakteri.', detail: 'Tahap 1: Fage melekat secara spesifik pada reseptor permukaan sel bakteri.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-shield-virus text-2xl text-emerald-400 mb-1"></i><p class="text-xs font-bold text-emerald-200">1. Tahap Adsorpsi</p><p class="text-[10px] text-slate-300">Fage melekat pada suatu bakteri</p></div>` },
+        { num: 2, name: '2. Penetrasi (Injeksi)', note: 'DNA fage dimasukkan ke sel inang.', detail: 'Tahap 2: Fage menyuntikkan asam nukleat DNA ke dalam sitoplasma sel bakteri inang.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-syringe text-2xl text-teal-400 mb-1"></i><p class="text-xs font-bold text-teal-200">2. Tahap Penetrasi</p><p class="text-[10px] text-slate-300">DNA fage dimasukkan ke dalam sel inang</p></div>` },
+        { num: 3, name: '3. Sisipan Profage', note: 'DNA fage disisipkan pada kromosom bakteri.', detail: 'Tahap 3: DNA fage disisipkan pada kromosom sel bakteri membentuk Profage (Profag).', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-link text-2xl text-blue-400 mb-1"></i><p class="text-xs font-bold text-blue-200">3. Sisipan Profage</p><p class="text-[10px] text-slate-300">DNA fage disisipkan pada kromosom sel bakteri</p></div>` },
+        { num: 4, name: '4. Pembelahan Sel Inang', note: 'Replikasi profage saat pembelahan sel.', detail: 'Tahap 4: Kromosom yang telah tersisipi profag mengadakan replikasi yang terjadi terus-menerus selama ada pembelahan sel.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-clone text-2xl text-indigo-400 mb-1"></i><p class="text-xs font-bold text-indigo-200">4. Pembelahan Sel Inang</p><p class="text-[10px] text-slate-300">Replikasi terjadi terus-menerus saat pembelahan sel</p></div>` },
+        { num: 5, name: '5. Induksi (Masuk Litik)', note: 'Profage memisahkan diri ke siklus litik.', detail: 'Tahap 5: Pada kasus yang jarang terjadi, profage dapat memisahkan diri dari kromosom sel bakteri untuk memasuki siklus litik.', graphic: `<div class="space-y-1 text-center"><i class="fa-solid fa-bolt text-2xl text-amber-400 mb-1"></i><p class="text-xs font-bold text-amber-200">5. Tahap Induksi</p><p class="text-[10px] text-slate-300">Profage memisahkan diri untuk masuk siklus litik</p></div>` }
       ]
     };
 
@@ -1294,6 +1335,16 @@
       document.getElementById('headerProgressText').innerText = `Kuis: ${progressPercent}%`;
     }
 
+    function openDiagramModal() {
+      const modal = document.getElementById('diagramModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeDiagramModal() {
+      const modal = document.getElementById('diagramModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       updateAnatomyDisplay();
       renderCycleSteps();
@@ -1301,5 +1352,25 @@
       renderGlossary();
     });
   </script>
+
+  <!-- DIAGRAM IMAGE ZOOM MODAL -->
+  <div id="diagramModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-6" onclick="closeDiagramModal()">
+    <div class="relative max-w-3xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl p-3 sm:p-4 border border-slate-700" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-2 px-1 mb-2">
+        <h4 class="font-bold text-xs sm:text-sm text-slate-800 flex items-center gap-1.5">
+          <i class="fa-solid fa-diagram-project text-emerald-600"></i> Diagram Reproduksi Bakteriofage (Siklus Litik & Lisogenik)
+        </h4>
+        <button onclick="closeDiagramModal()" class="w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs flex items-center justify-center cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="max-h-[75vh] overflow-auto rounded-xl bg-slate-900 p-2 flex justify-center">
+        <img src="img/siklus_litik_lisogenik.jpg" alt="Diagram Reproduksi Bakteriofag Siklus Litik dan Lisogenik HD" class="max-w-full h-auto rounded-lg object-contain">
+      </div>
+      <p class="text-[11px] text-slate-500 text-center mt-2.5">
+        Diagram Kurikulum Merdeka: Siklus Litik (Merah - Kiri) & Siklus Lisogenik (Biru - Kanan).
+      </p>
+    </div>
+  </div>
 </body>
 </html>

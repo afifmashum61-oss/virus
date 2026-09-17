@@ -552,32 +552,48 @@
     <!-- ========================================== -->
     <section id="tab-peranan" class="tab-content space-y-5">
       
-      <!-- YOUTUBE VIDEO PLAYER CARD -->
-      <div class="bg-slate-900 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-white shadow-xl space-y-3">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg bg-red-600 flex items-center justify-center text-white shrink-0">
-              <i class="fa-brands fa-youtube text-sm"></i>
+      <!-- YOUTUBE VIDEO PLAYER CARD (DUAL VIDEO PEMBELAJARAN) -->
+      <div class="bg-slate-900 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-white shadow-xl space-y-3.5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-xl bg-red-600 flex items-center justify-center text-white shrink-0 shadow-md shadow-red-900/50">
+              <i class="fa-brands fa-youtube text-base"></i>
             </span>
             <div>
-              <h2 class="font-bold text-xs sm:text-base text-white leading-tight">Video Pembelajaran Biologi</h2>
-              <p class="text-[10px] sm:text-xs text-slate-400">Virus & Peranannya - Kurikulum Merdeka</p>
+              <h2 class="font-extrabold text-xs sm:text-base text-white leading-tight">Video Pembelajaran Biologi</h2>
+              <p class="text-[10px] sm:text-xs text-slate-400">Pilih video pembelajaran yang ingin ditonton:</p>
             </div>
           </div>
-          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-500/20 text-red-400 border border-red-500/30 whitespace-nowrap">
-            YouTube
-          </span>
+          <!-- Video Selector Buttons -->
+          <div class="flex bg-slate-800 p-1 rounded-xl gap-1 shrink-0">
+            <button id="btnVideo1" onclick="switchVideo('8glI_X1XoBE', 'Video 1: Konsep & Struktur Virus', 1)" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-red-600 text-white shadow-xs transition cursor-pointer">
+              <i class="fa-brands fa-youtube mr-1"></i> Video 1
+            </button>
+            <button id="btnVideo2" onclick="switchVideo('7jkm_1b8KFQ', 'Video 2: Peranan Virus dalam Kehidupan', 2)" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer">
+              <i class="fa-brands fa-youtube mr-1"></i> Video 2
+            </button>
+          </div>
         </div>
 
-        <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black shadow-inner border border-slate-800">
-          <iframe 
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/8glI_X1XoBE?rel=0&modestbranding=1" 
-            title="Video Pembelajaran Virus Biologi Kelas 10 Kurikulum Merdeka"
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-          </iframe>
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-play text-red-500 animate-pulse"></i> <span id="videoTitleText">Video 1: Konsep & Struktur Virus</span>
+            </span>
+            <span class="text-[10px] text-slate-400 font-mono bg-slate-800 px-2 py-0.5 rounded-md">YouTube HD</span>
+          </div>
+
+          <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black shadow-inner border border-slate-800">
+            <iframe 
+              id="youtubeIframe"
+              class="w-full h-full"
+              src="https://www.youtube.com/embed/8glI_X1XoBE?rel=0&modestbranding=1" 
+              title="Video Pembelajaran Virus Biologi Kelas 10 Kurikulum Merdeka"
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
       </div>
 
@@ -1139,6 +1155,26 @@
         btnB.className = "flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-sm cursor-pointer";
         btnH.className = "flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer";
         secB.classList.remove('hidden'); secH.classList.add('hidden');
+      }
+    }
+
+    function switchVideo(videoId, title, num) {
+      const iframe = document.getElementById('youtubeIframe');
+      if (iframe) {
+        iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
+      }
+      const titleText = document.getElementById('videoTitleText');
+      if (titleText) {
+        titleText.innerText = title;
+      }
+      const btn1 = document.getElementById('btnVideo1');
+      const btn2 = document.getElementById('btnVideo2');
+      if (num === 1) {
+        if (btn1) btn1.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-red-600 text-white shadow-xs transition cursor-pointer";
+        if (btn2) btn2.className = "px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer";
+      } else {
+        if (btn2) btn2.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-red-600 text-white shadow-xs transition cursor-pointer";
+        if (btn1) btn1.className = "px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer";
       }
     }
 

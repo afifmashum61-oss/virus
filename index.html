@@ -670,25 +670,95 @@
 
       </div>
 
-      <!-- SECTION PENCEGAHAN -->
-      <div id="secPencegahan" class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 space-y-3">
-        <h3 class="text-xs sm:text-sm font-bold text-emerald-900 flex items-center gap-2">
-          <i class="fa-solid fa-shield-halved text-emerald-700 text-base"></i> Upaya Pencegahan Penyakit Virus
-        </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-          <div class="bg-white p-3 rounded-xl border border-emerald-100 text-[11px] space-y-1">
-            <p class="font-bold text-emerald-800"><i class="fa-solid fa-vial text-emerald-600 mr-1"></i> 1. Vaksinasi / Imunisasi</p>
-            <p class="text-slate-600 leading-relaxed">Merangsang pembentukan antibodi memori spesifik.</p>
+      <!-- SECTION PENCEGAHAN, PENANGGULANGAN & SOCIOSCIENTIFIC ISSUES (SSI) -->
+      <div id="secPencegahan" class="space-y-4">
+        
+        <!-- Header Banner SSI -->
+        <div class="bg-gradient-to-r from-teal-900 via-emerald-900 to-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-md space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+              <i class="fa-solid fa-users-viewfinder"></i> Kurikulum Merdeka - SSI
+            </span>
+            <span class="text-[10px] text-slate-300 font-medium">Sains, Masyarakat & Etika</span>
           </div>
-          <div class="bg-white p-3 rounded-xl border border-emerald-100 text-[11px] space-y-1">
-            <p class="font-bold text-emerald-800"><i class="fa-solid fa-soap text-emerald-600 mr-1"></i> 2. Pola Hidup Bersih (PHBS)</p>
-            <p class="text-slate-600 leading-relaxed">Cuci tangan dengan sabun/alkohol & cuci makanan.</p>
+          <h3 class="text-sm sm:text-lg font-extrabold text-white flex items-center gap-2">
+            <i class="fa-solid fa-globe text-emerald-400"></i> Pencegahan, Penanggulangan & Socio-Scientific Issues (SSI)
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Menghubungkan biologi virus dengan isu-isu sosial, etika medis, serta keputusan masyarakat dalam kehidupan sehari-hari.
+          </p>
+        </div>
+
+        <!-- SOCIOSCIENTIFIC ISSUES (SSI) INTERACTIVE MODULE -->
+        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-3.5">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+            <h4 class="font-bold text-xs sm:text-sm text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-comments-question text-teal-600"></i> Eksplorasi Studi Kasus Isu Sosio-Sains (SSI)
+            </h4>
+            <span class="text-[10px] font-bold bg-teal-50 text-teal-700 px-2 py-0.5 rounded-md border border-teal-200">
+              Refleksi Kritis
+            </span>
           </div>
-          <div class="bg-white p-3 rounded-xl border border-emerald-100 text-[11px] space-y-1">
-            <p class="font-bold text-emerald-800"><i class="fa-solid fa-capsules text-emerald-600 mr-1"></i> 3. Obat Antivirus</p>
-            <p class="text-slate-600 leading-relaxed">Menghambat siklus replikasi virus dalam sel inang.</p>
+
+          <!-- SSI Case Selector Tabs -->
+          <div class="grid grid-cols-3 gap-1.5 p-1 bg-slate-100 rounded-xl">
+            <button id="btnSSICase1" onclick="selectSSICase('vaccine')" class="py-2 text-[10px] sm:text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-xs cursor-pointer text-center">
+              <i class="fa-solid fa-vial-virus mr-1"></i> Disinformasi Vaksin
+            </button>
+            <button id="btnSSICase2" onclick="selectSSICase('antibiotic')" class="py-2 text-[10px] sm:text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer text-center">
+              <i class="fa-solid fa-pills mr-1"></i> Mitos Antibiotik
+            </button>
+            <button id="btnSSICase3" onclick="selectSSICase('zoonosis')" class="py-2 text-[10px] sm:text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer text-center">
+              <i class="fa-solid fa-paw mr-1"></i> Zoonosis & One Health
+            </button>
+          </div>
+
+          <!-- SSI Case Content Card -->
+          <div id="ssiCaseDisplay" class="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-3">
+            <!-- Populated dynamically by JS -->
           </div>
         </div>
+
+        <!-- 3 PILAR PENCEGAHAN & PENANGGULANGAN TEKNIS -->
+        <div class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 space-y-3">
+          <h4 class="text-xs sm:text-sm font-bold text-emerald-900 flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-emerald-700 text-base"></i> 3 Pilar Utama Pencegahan & Penanggulangan Virus
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            
+            <div class="bg-white p-3.5 rounded-xl border border-emerald-100 text-xs space-y-1.5 shadow-xs">
+              <div class="flex items-center gap-1.5 text-emerald-800 font-bold">
+                <i class="fa-solid fa-syringe text-emerald-600"></i>
+                <h5>1. Pencegahan Medis Spesifik</h5>
+              </div>
+              <p class="text-slate-600 text-[11px] leading-relaxed">
+                <strong>Vaksinasi / Imunisasi:</strong> Merangsang pembentukan sel Limfosit B & T memori spesifik. Jenis: <em>Attenuated</em> (dilemahkan), <em>Inactivated</em> (dimatikan), dan <em>mRNA/Subunit</em>.
+              </p>
+            </div>
+
+            <div class="bg-white p-3.5 rounded-xl border border-emerald-100 text-xs space-y-1.5 shadow-xs">
+              <div class="flex items-center gap-1.5 text-emerald-800 font-bold">
+                <i class="fa-solid fa-soap text-emerald-600"></i>
+                <h5>2. Penanggulangan Fisik & PHBS</h5>
+              </div>
+              <p class="text-slate-600 text-[11px] leading-relaxed">
+                <strong>Prinsip Kimia Sabun:</strong> Molekul amfipatik sabun melarutkan selubung lipid (envelope) virus SARS-CoV-2/Flu hingga kapsid hancur. Ditunjang masker 3-ply & ventilasi.
+              </p>
+            </div>
+
+            <div class="bg-white p-3.5 rounded-xl border border-emerald-100 text-xs space-y-1.5 shadow-xs">
+              <div class="flex items-center gap-1.5 text-emerald-800 font-bold">
+                <i class="fa-solid fa-capsules text-emerald-600"></i>
+                <h5>3. Penanggulangan Kuratif</h5>
+              </div>
+              <p class="text-slate-600 text-[11px] leading-relaxed">
+                <strong>Obat Antivirus Spesifik:</strong> Antivirus (Acyclovir, Oseltamivir) menghambat enzim replikasi (Polimerase/Reverse Transcriptase) di dalam sel inang. Ditambah isolasi mandiri.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
     </section>
@@ -1381,11 +1451,93 @@
       if (modal) modal.classList.add('hidden');
     }
 
+    // SOCIOSCIENTIFIC ISSUES (SSI) ENGINE
+    const ssiData = {
+      vaccine: {
+        title: 'Disinformasi Vaksinasi vs Herd Immunity (Kekebalan Kelompok)',
+        badge: 'Etika & Imunitas Publik',
+        icon: 'fa-vial-virus text-emerald-600',
+        science: 'Vaksin mengenalkan antigen virus yang dilemahkan/dimatikan untuk melatih sel Limfosit B & T membentuk antibodi spesifik tanpa menimbulkan sakit berat.',
+        society: 'Adanya penolakan imunisasi akibat informasi hoax/mitos di media sosial menyebabkan penurunan tingkat kekebalan kelompok (herd immunity), sehingga memicu wabah ulang (seperti campak/polio) pada anak-anak & kelompok rentan.',
+        solution: 'Peningkatan literasi sains masyarakat, verifikasi data uji klinis independen (BPOM/WHO), serta gerakan edukasi imunisasi nasional gratis.'
+      },
+      antibiotic: {
+        title: 'Mitos Penggunaan Antibiotik pada Infeksi Virus (Flu/Batuk)',
+        badge: 'Resistensi Obat Superbug',
+        icon: 'fa-pills text-amber-600',
+        science: 'Antibiotik secara spesifik dirancang menghancurkan sel bakteri (dinding peptidoglikan). Virus adalah agen aseluler tanpa sel, sehingga ANTIBIOTIK TIDAK BISA MEMBUNUH VIRUS!',
+        society: 'Kebiasaan masyarakat membeli obat antibiotik tanpa resep dokter saat kena flu/batuk virus justru memicu munculnya bakteri kebal obat super (Superbug Resistance) yang sangat berbahaya bagi medis.',
+        solution: 'Regulasi ketat penjualan antibiotik di apotek, penggunaan obat antivirus spesifik (bukan antibiotik) untuk infeksi virus, dan edukasi perbedaan bakteri vs virus.'
+      },
+      zoonosis: {
+        title: 'Ancaman Pandemi Zoonosis & Pendekatan One Health',
+        badge: 'Lingkungan & Kesehatan Global',
+        icon: 'fa-paw text-blue-600',
+        science: 'Sebagian besar virus berbahaya (Rabies, Influenza H5N1, Ebola, SARS-CoV-2) bersifat Zoonotik, yaitu berpindah dari reservoir hewan liar/peternakan ke manusia.',
+        society: 'Kerusakan ekosistem hutan, perburuan liar, dan sanitasi pasar hewan yang buruk mempermudah lompatan spesies (spillover) virus baru ke populasi manusia yang memicu pandemi global.',
+        solution: 'Penerapan pendekatan "One Health" (sinergi kesehatan manusia, hewan, dan lingkungan), biosekuritas pasar hewan, dan penghentian deforestasi liar.'
+      }
+    };
+
+    function selectSSICase(key) {
+      const b1 = document.getElementById('btnSSICase1');
+      const b2 = document.getElementById('btnSSICase2');
+      const b3 = document.getElementById('btnSSICase3');
+      [b1, b2, b3].forEach(b => { if (b) b.className = "py-2 text-[10px] sm:text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900 cursor-pointer text-center"; });
+
+      if (key === 'vaccine' && b1) b1.className = "py-2 text-[10px] sm:text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-xs cursor-pointer text-center";
+      if (key === 'antibiotic' && b2) b2.className = "py-2 text-[10px] sm:text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-xs cursor-pointer text-center";
+      if (key === 'zoonosis' && b3) b3.className = "py-2 text-[10px] sm:text-xs font-bold rounded-lg transition bg-white text-emerald-800 shadow-xs cursor-pointer text-center";
+
+      renderSSICaseDisplay(key);
+    }
+
+    function renderSSICaseDisplay(key) {
+      const item = ssiData[key];
+      const container = document.getElementById('ssiCaseDisplay');
+      if (!container || !item) return;
+
+      container.innerHTML = `
+        <div class="flex items-center justify-between gap-2 border-b border-slate-200 pb-2">
+          <h4 class="font-bold text-xs sm:text-sm text-slate-900 flex items-center gap-1.5">
+            <i class="fa-solid ${item.icon}"></i> ${item.title}
+          </h4>
+          <span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 shrink-0">
+            ${item.badge}
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-[11px] pt-1">
+          <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
+            <p class="font-bold text-emerald-800 flex items-center gap-1">
+              <i class="fa-solid fa-atom text-emerald-600"></i> 1. Perspektif Sains Biologi
+            </p>
+            <p class="text-slate-600 leading-relaxed">${item.science}</p>
+          </div>
+
+          <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
+            <p class="font-bold text-amber-800 flex items-center gap-1">
+              <i class="fa-solid fa-users text-amber-600"></i> 2. Isu Sosial & Masyarakat
+            </p>
+            <p class="text-slate-600 leading-relaxed">${item.society}</p>
+          </div>
+
+          <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
+            <p class="font-bold text-blue-800 flex items-center gap-1">
+              <i class="fa-solid fa-lightbulb text-blue-600"></i> 3. Solusi Penanggulangan
+            </p>
+            <p class="text-slate-600 leading-relaxed">${item.solution}</p>
+          </div>
+        </div>
+      `;
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       updateAnatomyDisplay();
       renderCycleSteps();
       renderQuizQuestion();
       renderGlossary();
+      selectSSICase('vaccine');
     });
   </script>
 

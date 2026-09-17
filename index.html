@@ -778,8 +778,8 @@
         </button>
       </div>
 
-      <!-- QUIZ SECTION (LAYOUT KANAN / RIGHT SIDEBAR) -->
-      <div id="sectionQuiz" class="space-y-4">
+      <!-- QUIZ SECTION -->
+      <div id="sectionQuiz" class="space-y-3.5">
         
         <!-- Quiz Progress & Audio Header -->
         <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex items-center justify-between gap-2">
@@ -799,116 +799,110 @@
           </div>
         </div>
 
-        <!-- RESPONSIVE GRID LAYOUT: LEFT = SOAL, RIGHT = PANEL NAVIGASI (SISI KANAN) -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
-          
-          <!-- LEFT COLUMN (SOAL, GAMBAR, OPSI JAWABAN) -->
-          <div class="md:col-span-8 space-y-4">
-            
-            <!-- Quiz Card Container -->
-            <div id="quizCard" class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-3.5">
-              <div class="flex items-center justify-between gap-2">
-                <span id="quizCategoryBadge" class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 inline-block">
-                  Kategori
-                </span>
-                <button id="btnFlagQuestion" onclick="toggleFlagQuestion()" class="text-[11px] font-semibold text-slate-500 hover:text-amber-600 px-2 py-0.5 rounded-md border border-slate-200 hover:border-amber-300 transition cursor-pointer flex items-center gap-1">
-                  <i class="fa-solid fa-bookmark"></i> <span id="flagBtnText">Tandai Ragu</span>
-                </button>
-              </div>
-
-              <h3 id="quizQuestionText" class="text-xs sm:text-base font-bold text-slate-900 leading-normal">
-                ---
-              </h3>
-
-              <!-- Image Container -->
-              <div id="quizImageContainer" class="hidden w-full flex justify-center bg-slate-900 rounded-xl p-3 my-2 shadow-inner border border-slate-800 text-white"></div>
-
-              <!-- Options Container -->
-              <div id="quizOptionsContainer" class="space-y-2">
-                <!-- Populated dynamically by JS -->
-              </div>
-
-              <!-- Interactive Feedback Banner -->
-              <div id="quizFeedbackBanner" class="hidden p-3 rounded-xl text-xs font-bold transition flex items-center justify-between gap-2 shadow-xs">
-                <!-- Populated dynamically by JS -->
-              </div>
-
-              <!-- Explanation Alert Box -->
-              <div id="quizExplanationBox" class="hidden p-3.5 rounded-xl text-xs space-y-1">
-                <p id="quizExplanationTitle" class="font-bold text-xs">Pembahasan Jawaban:</p>
-                <p id="quizExplanationBody" class="text-slate-700 leading-relaxed text-[11px] sm:text-xs">---</p>
-              </div>
-
-              <!-- Navigation buttons -->
-              <div class="pt-1 flex justify-between gap-2.5">
-                <button id="btnPrevQuiz" onclick="navigateQuiz(-1)" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition disabled:opacity-50 cursor-pointer">
-                  <i class="fa-solid fa-arrow-left mr-1"></i> Sebelum
-                </button>
-                <button id="btnNextQuiz" onclick="navigateQuiz(1)" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition shadow-md shadow-emerald-200 cursor-pointer">
-                  Lanjut <i class="fa-solid fa-arrow-right ml-1"></i>
-                </button>
-              </div>
-            </div>
-
-            <!-- Quiz Result Box -->
-            <div id="quizResultCard" class="hidden bg-white rounded-3xl p-5 border border-slate-200 shadow-xl text-center space-y-3.5">
-              <div class="w-16 h-16 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl shadow-inner">
-                <i id="resultIcon" class="fa-solid fa-trophy"></i>
-              </div>
-              <div>
-                <h3 id="resultTitle" class="text-lg font-extrabold text-slate-900">Luar Biasa!</h3>
-                <p class="text-xs text-slate-500 mt-0.5">Anda telah menyelesaikan 20 Soal Biologi Virus.</p>
-              </div>
-
-              <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 max-w-xs mx-auto flex items-center justify-around">
-                <div>
-                  <p class="text-[10px] text-slate-500 font-medium">Skor Akhir</p>
-                  <p id="resultScore" class="text-2xl font-black text-emerald-600">100</p>
-                </div>
-                <div class="h-7 w-px bg-slate-200"></div>
-                <div>
-                  <p class="text-[10px] text-slate-500 font-medium">Jawaban Benar</p>
-                  <p id="resultCorrectCount" class="text-2xl font-black text-slate-800">20/20</p>
-                </div>
-              </div>
-
-              <button onclick="restartQuiz()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-500/30 cursor-pointer">
-                <i class="fa-solid fa-rotate-right mr-1"></i> Ulangi Kuis 20 Soal
+        <!-- Quiz Card Container (FULL VIEW DISPLAY) -->
+        <div id="quizCard" class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-3.5">
+          <div class="flex items-center justify-between gap-2">
+            <span id="quizCategoryBadge" class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 inline-block">
+              Kategori
+            </span>
+            <div class="flex items-center gap-2">
+              <span id="quizStreakBadge" class="hidden text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-300 text-[10px] font-extrabold animate-bounce shadow-xs">
+                🔥 0 Beruntun
+              </span>
+              <button id="btnFlagQuestion" onclick="toggleFlagQuestion()" class="text-[11px] font-semibold text-slate-500 hover:text-amber-600 px-2 py-0.5 rounded-md border border-slate-200 hover:border-amber-300 transition cursor-pointer flex items-center gap-1">
+                <i class="fa-solid fa-bookmark"></i> <span id="flagBtnText">Tandai Ragu</span>
               </button>
             </div>
-
           </div>
 
-          <!-- RIGHT COLUMN (NAVIGASI SOAL 1-20 KANAN) -->
-          <div class="md:col-span-4 space-y-3">
-            
-            <!-- 20-QUESTION QUICK NAVIGATOR PILLS (SISI KANAN & RIGHT-ALIGNED) -->
-            <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-3">
-              <div class="flex items-center justify-between text-xs font-bold text-slate-800 border-b border-slate-100 pb-2">
-                <span class="flex items-center gap-1.5">
-                  <i class="fa-solid fa-list-ol text-emerald-600"></i> Navigasi Soal (1 - 20)
-                </span>
-                <span id="quizStreakBadge" class="hidden text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-300 text-[10px] font-extrabold animate-bounce shadow-xs">
-                  🔥 0 Beruntun
-                </span>
-              </div>
+          <h3 id="quizQuestionText" class="text-xs sm:text-base font-bold text-slate-900 leading-normal">
+            ---
+          </h3>
 
-              <!-- Pills container aligned right & flex-wrap -->
-              <div id="quizNavPillsContainer" class="flex flex-wrap items-center justify-end gap-1.5 overflow-x-auto pb-1">
-                <!-- Populated dynamically by JS -->
-              </div>
+          <!-- Image Container -->
+          <div id="quizImageContainer" class="hidden w-full flex justify-center bg-slate-900 rounded-xl p-3 my-2 shadow-inner border border-slate-800 text-white"></div>
 
-              <!-- Legend info inside right panel -->
-              <div class="pt-2.5 border-t border-slate-100 grid grid-cols-2 gap-1.5 text-[10px] font-semibold text-slate-600">
-                <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span> Benar</div>
-                <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500 shrink-0"></span> Salah</div>
-                <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0"></span> Ragu-Ragu</div>
-                <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-200 shrink-0"></span> Belum</div>
-              </div>
+          <!-- Options Container -->
+          <div id="quizOptionsContainer" class="space-y-2">
+            <!-- Populated dynamically by JS -->
+          </div>
+
+          <!-- Interactive Feedback Banner -->
+          <div id="quizFeedbackBanner" class="hidden p-3 rounded-xl text-xs font-bold transition flex items-center justify-between gap-2 shadow-xs">
+            <!-- Populated dynamically by JS -->
+          </div>
+
+          <!-- Explanation Alert Box -->
+          <div id="quizExplanationBox" class="hidden p-3.5 rounded-xl text-xs space-y-1">
+            <p id="quizExplanationTitle" class="font-bold text-xs">Pembahasan Jawaban:</p>
+            <p id="quizExplanationBody" class="text-slate-700 leading-relaxed text-[11px] sm:text-xs">---</p>
+          </div>
+
+          <!-- Navigation buttons -->
+          <div class="pt-1 flex justify-between gap-2.5">
+            <button id="btnPrevQuiz" onclick="navigateQuiz(-1)" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition disabled:opacity-50 cursor-pointer">
+              <i class="fa-solid fa-arrow-left mr-1"></i> Sebelum
+            </button>
+            <button id="btnNextQuiz" onclick="navigateQuiz(1)" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition shadow-md shadow-emerald-200 cursor-pointer">
+              Lanjut <i class="fa-solid fa-arrow-right ml-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Result Box -->
+        <div id="quizResultCard" class="hidden bg-white rounded-3xl p-5 border border-slate-200 shadow-xl text-center space-y-3.5">
+          <div class="w-16 h-16 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl shadow-inner">
+            <i id="resultIcon" class="fa-solid fa-trophy"></i>
+          </div>
+          <div>
+            <h3 id="resultTitle" class="text-lg font-extrabold text-slate-900">Luar Biasa!</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Anda telah menyelesaikan 20 Soal Biologi Virus.</p>
+          </div>
+
+          <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 max-w-xs mx-auto flex items-center justify-around">
+            <div>
+              <p class="text-[10px] text-slate-500 font-medium">Skor Akhir</p>
+              <p id="resultScore" class="text-2xl font-black text-emerald-600">100</p>
+            </div>
+            <div class="h-7 w-px bg-slate-200"></div>
+            <div>
+              <p class="text-[10px] text-slate-500 font-medium">Jawaban Benar</p>
+              <p id="resultCorrectCount" class="text-2xl font-black text-slate-800">20/20</p>
+            </div>
+          </div>
+
+          <button onclick="restartQuiz()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-500/30 cursor-pointer">
+            <i class="fa-solid fa-rotate-right mr-1"></i> Ulangi Kuis 20 Soal
+          </button>
+        </div>
+
+        <!-- COLLAPSIBLE NAVIGASI SOAL CARD (TERTUTUP BY DEFAULT AGAR SOAL TAMPIL FULL) -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition">
+          <button onclick="toggleNavGrid()" class="w-full p-3 sm:p-3.5 flex items-center justify-between text-xs font-bold text-slate-800 bg-white hover:bg-slate-50 transition cursor-pointer">
+            <span class="flex items-center gap-1.5">
+              <i class="fa-solid fa-list-ol text-emerald-600"></i> Navigasi Nomor Soal (1 - 20)
+            </span>
+            <div class="flex items-center gap-2">
+              <span id="quizAnsweredCountBadge" class="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                0/20 Terjawab
+              </span>
+              <i id="navGridChevron" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-200"></i>
+            </div>
+          </button>
+
+          <!-- COLLAPSIBLE BODY (HIDDEN BY DEFAULT SO SOAL TAMPIL FULL) -->
+          <div id="quizNavGridBody" class="hidden p-3.5 pt-1 border-t border-slate-100 space-y-3 bg-slate-50/50">
+            <div id="quizNavPillsContainer" class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 pt-2">
+              <!-- Populated dynamically by JS -->
             </div>
 
+            <div class="pt-2 border-t border-slate-200/60 flex flex-wrap justify-around gap-2 text-[10px] font-semibold text-slate-600">
+              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span> Benar</div>
+              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500 shrink-0"></span> Salah</div>
+              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0"></span> Ragu-Ragu</div>
+              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-200 shrink-0"></span> Belum</div>
+            </div>
           </div>
-
         </div>
 
       </div>
@@ -1649,10 +1643,27 @@
       renderGlossary();
     }
 
+    function toggleNavGrid() {
+      const body = document.getElementById('quizNavGridBody');
+      const chevron = document.getElementById('navGridChevron');
+      if (body) {
+        if (body.classList.contains('hidden')) {
+          body.classList.remove('hidden');
+          if (chevron) chevron.classList.add('rotate-180');
+        } else {
+          body.classList.add('hidden');
+          if (chevron) chevron.classList.remove('rotate-180');
+        }
+      }
+    }
+
     function updateProgressTracker() {
       let filledAnswers = quizAnswers.filter(a => a !== null).length;
       let progressPercent = Math.round((filledAnswers / quizQuestions.length) * 100);
-      document.getElementById('headerProgressText').innerText = `Kuis: ${progressPercent}%`;
+      const headerProgress = document.getElementById('headerProgressText');
+      if (headerProgress) headerProgress.innerText = `Kuis: ${progressPercent}%`;
+      const answeredBadge = document.getElementById('quizAnsweredCountBadge');
+      if (answeredBadge) answeredBadge.innerText = `${filledAnswers}/20 Terjawab`;
     }
 
     function openDiagramModal() {

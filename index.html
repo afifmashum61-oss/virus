@@ -799,6 +799,35 @@
           </div>
         </div>
 
+        <!-- COLLAPSIBLE NAVIGASI SOAL CARD (DIATAS SOAL - TERTUTUP BY DEFAULT) -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition">
+          <button onclick="toggleNavGrid()" class="w-full p-3 sm:p-3.5 flex items-center justify-between text-xs font-bold text-slate-800 bg-white hover:bg-slate-50 transition cursor-pointer">
+            <span class="flex items-center gap-1.5">
+              <i class="fa-solid fa-list-ol text-emerald-600"></i> Navigasi Nomor Soal (1 - 20)
+            </span>
+            <div class="flex items-center gap-2">
+              <span id="quizAnsweredCountBadge" class="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                0/20 Terjawab
+              </span>
+              <i id="navGridChevron" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-200"></i>
+            </div>
+          </button>
+
+          <!-- COLLAPSIBLE BODY (HIDDEN BY DEFAULT AGAR SOAL TAMPIL FULL) -->
+          <div id="quizNavGridBody" class="hidden p-3.5 pt-1 border-t border-slate-100 space-y-3 bg-slate-50/50">
+            <div id="quizNavPillsContainer" class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 pt-2">
+              <!-- Populated dynamically by JS -->
+            </div>
+
+            <div class="pt-2 border-t border-slate-200/60 flex flex-wrap justify-around gap-2 text-[10px] font-semibold text-slate-600">
+              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span> Benar</div>
+              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500 shrink-0"></span> Salah</div>
+              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0"></span> Ragu-Ragu</div>
+              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-200 shrink-0"></span> Belum</div>
+            </div>
+          </div>
+        </div>
+
         <!-- Quiz Card Container (FULL VIEW DISPLAY) -->
         <div id="quizCard" class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-3.5">
           <div class="flex items-center justify-between gap-2">
@@ -874,35 +903,6 @@
           <button onclick="restartQuiz()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-500/30 cursor-pointer">
             <i class="fa-solid fa-rotate-right mr-1"></i> Ulangi Kuis 20 Soal
           </button>
-        </div>
-
-        <!-- COLLAPSIBLE NAVIGASI SOAL CARD (TERTUTUP BY DEFAULT AGAR SOAL TAMPIL FULL) -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition">
-          <button onclick="toggleNavGrid()" class="w-full p-3 sm:p-3.5 flex items-center justify-between text-xs font-bold text-slate-800 bg-white hover:bg-slate-50 transition cursor-pointer">
-            <span class="flex items-center gap-1.5">
-              <i class="fa-solid fa-list-ol text-emerald-600"></i> Navigasi Nomor Soal (1 - 20)
-            </span>
-            <div class="flex items-center gap-2">
-              <span id="quizAnsweredCountBadge" class="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                0/20 Terjawab
-              </span>
-              <i id="navGridChevron" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-200"></i>
-            </div>
-          </button>
-
-          <!-- COLLAPSIBLE BODY (HIDDEN BY DEFAULT SO SOAL TAMPIL FULL) -->
-          <div id="quizNavGridBody" class="hidden p-3.5 pt-1 border-t border-slate-100 space-y-3 bg-slate-50/50">
-            <div id="quizNavPillsContainer" class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 pt-2">
-              <!-- Populated dynamically by JS -->
-            </div>
-
-            <div class="pt-2 border-t border-slate-200/60 flex flex-wrap justify-around gap-2 text-[10px] font-semibold text-slate-600">
-              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span> Benar</div>
-              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500 shrink-0"></span> Salah</div>
-              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0"></span> Ragu-Ragu</div>
-              <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-200 shrink-0"></span> Belum</div>
-            </div>
-          </div>
         </div>
 
       </div>
